@@ -28,9 +28,36 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+gem 'dry-initializer', git: 'https://github.com/dry-rb/dry-initializer.git', ref: '3167b5a'
+gem 'dry-struct', git: 'https://github.com/dry-rb/dry-struct.git', ref: 'ef8c259'
+gem 'dry-types', git: 'https://github.com/dry-rb/dry-types.git', ref: 'da1367f'
+
+group :test, :development do
+  gem 'awesome_print',
+      git: 'https://github.com/awesome-print/awesome_print.git',
+      ref: '4564fd7'
+
+  # For RubyMine debugger
+  gem 'ruby-debug-ide'
+  gem 'debase'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'webdrivers'
+  gem 'database_cleaner'
+  gem 'factory_bot'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'rspec', '~> 3.8'
+  gem 'rspec-core', '~> 3.8'
+  gem 'rspec-rails', '~> 3.8'
+  gem 'rubocop'
+  gem 'rubocop-rspec'
+  gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do
