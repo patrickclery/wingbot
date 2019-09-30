@@ -1,0 +1,2 @@
+class RawData < ApplicationRecord
+end
