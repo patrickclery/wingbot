@@ -29,10 +29,6 @@ RSpec.configure do |config|
   end
 end
 
-### Loads all RSpec shared examples and shared contexts
-# spec/shared/*.rb
-Dir[File.join(__dir__, 'shared', '*.rb')].each { |file| require file }
-
 ###############################################################################
 ### Shoulda::Matchers
 require 'shoulda/matchers'
@@ -104,18 +100,13 @@ end
 
 
 ############################################################
-# WEBMOCK & VCR
-require 'vcr'
+# WEBMOCK
 require 'webmock'
-
-VCR.configure do |c|
-  c.cassette_library_dir = !!ENV['ALLOW_HTTP'] ? 'tmp/cassettes' : 'spec/cassettes'
-  c.hook_into :webmock
-  c.configure_rspec_metadata!
-  c.allow_http_connections_when_no_cassette = !!ENV['ALLOW_HTTP']
-end
-
 WebMock.enable!
+
+# Borrow the shared stubs from the tinder client
+gem_dir = Gem::Specification.find_by_name("tinder_client").gem_dir
+require "#{gem_dir}/spec/tinder/contexts/http_request_stubs"
 
 # Extra
 require 'faker'
