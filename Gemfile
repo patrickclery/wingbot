@@ -31,12 +31,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'dry-initializer', git: 'https://github.com/dry-rb/dry-initializer.git', ref: '3167b5a'
 gem 'dry-struct', git: 'https://github.com/dry-rb/dry-struct.git', ref: 'ef8c259'
 gem 'dry-types', git: 'https://github.com/dry-rb/dry-types.git', ref: 'da1367f'
+gem 'tinder_client', path: '../../Projects/tinder_client'
 
 group :test, :development do
-  gem 'awesome_print',
-      git: 'https://github.com/awesome-print/awesome_print.git',
-      ref: '4564fd7'
-
   # For RubyMine debugger
   gem 'ruby-debug-ide'
   gem 'debase'
