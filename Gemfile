@@ -3,6 +3,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.4'
 
+group :test, :development do
+  # For RubyMine debugger
+  gem 'ruby-debug-ide'
+  gem 'debase'
+  gem 'simplecov'
+  gem 'codecov'
+end
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
 # Use postgresql as the database for Active Record
@@ -32,12 +40,6 @@ gem 'dry-initializer', git: 'https://github.com/dry-rb/dry-initializer.git', ref
 gem 'dry-struct', git: 'https://github.com/dry-rb/dry-struct.git', ref: 'ef8c259'
 gem 'dry-types', git: 'https://github.com/dry-rb/dry-types.git', ref: 'da1367f'
 gem 'tinder_client', path: '../../Projects/tinder_client'
-
-group :test, :development do
-  # For RubyMine debugger
-  gem 'ruby-debug-ide'
-  gem 'debase'
-end
 
 group :test do
   gem 'capybara'
