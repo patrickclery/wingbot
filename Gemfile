@@ -39,7 +39,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'dry-initializer', git: 'https://github.com/dry-rb/dry-initializer.git', ref: '3167b5a'
 gem 'dry-struct', git: 'https://github.com/dry-rb/dry-struct.git', ref: 'ef8c259'
 gem 'dry-types', git: 'https://github.com/dry-rb/dry-types.git', ref: 'da1367f'
-gem 'tinder_client', path: '../../Projects/tinder_client'
+gem 'tinder_client', git: 'https://github.com/patrickclery/tinder_client.git'
 
 group :test do
   gem 'capybara'
