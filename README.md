@@ -1,24 +1,3 @@
-# README
+RSpec Tests: [![CircleCI](https://circleci.com/gh/patrickclery/tinder_client.svg?style=svg)](https://circleci.com/gh/patrickclery/better_tinder)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Code Coverage: [![codecov](https://codecov.io/gh/patrickclery/better_tinder/branch/master/graph/badge.svg)](https://codecov.io/gh/patrickclery/better_tinder)

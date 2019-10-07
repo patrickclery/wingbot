@@ -1,13 +1,16 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
+
+### Support for CodeCov
+require 'simplecov'
+SimpleCov.start
+
+require 'codecov'
+SimpleCov.formatter = SimpleCov::Formatter::Codecov
+
 # Prevent database truncation if the environment is production
 require 'rspec/rails'
-# Add additional requires below this line. Rails is not loaded until this point!
-
-RSpec.configure do |config|
-  # Enable flags like --only-failures and --next-failure
-end
 
 ###############################################################################
 ### General
