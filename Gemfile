@@ -3,14 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.4'
 
-group :test, :development do
-  # For RubyMine debugger
-  gem 'ruby-debug-ide'
-  gem 'debase'
-  gem 'simplecov'
-  gem 'codecov'
-end
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0'
 # Use postgresql as the database for Active Record
@@ -39,7 +31,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'dry-initializer', git: 'https://github.com/dry-rb/dry-initializer.git', ref: '3167b5a'
 gem 'dry-struct', git: 'https://github.com/dry-rb/dry-struct.git', ref: 'ef8c259'
 gem 'dry-types', git: 'https://github.com/dry-rb/dry-types.git', ref: 'da1367f'
-gem 'tinder_client', git: 'https://github.com/patrickclery/tinder_client.git'
+gem 'tinder_client', git: 'https://github.com/patrickclery/tinder_client.git', branch: 'master'
 
 group :test do
   gem 'capybara'
@@ -66,4 +58,12 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test, :development do
+  # For RubyMine debugger
+  gem 'ruby-debug-ide'
+  gem 'debase'
+  gem 'simplecov'
+  gem 'codecov'
 end
