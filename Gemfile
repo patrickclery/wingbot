@@ -28,9 +28,9 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
-gem 'dry-initializer', git: 'https://github.com/dry-rb/dry-initializer.git', ref: '3167b5a'
-gem 'dry-struct', git: 'https://github.com/dry-rb/dry-struct.git', ref: 'ef8c259'
-gem 'dry-types', git: 'https://github.com/dry-rb/dry-types.git', ref: 'da1367f'
+gem 'dry-initializer', git: 'https://github.com/dry-rb/dry-initializer.git', branch: 'master'
+gem 'dry-struct', git: 'https://github.com/dry-rb/dry-struct.git', branch: 'master'
+gem 'dry-types', git: 'https://github.com/dry-rb/dry-types.git', branch: 'master'
 gem 'tinder_client', git: 'https://github.com/patrickclery/tinder_client.git', branch: 'master'
 
 group :test do
