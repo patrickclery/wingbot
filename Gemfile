@@ -32,6 +32,7 @@ gem 'dry-initializer', git: 'https://github.com/dry-rb/dry-initializer.git', bra
 gem 'dry-struct', git: 'https://github.com/dry-rb/dry-struct.git', branch: 'master'
 gem 'dry-types', git: 'https://github.com/dry-rb/dry-types.git', branch: 'master'
 gem 'tinder_client', git: 'https://github.com/patrickclery/tinder_client.git', branch: 'master'
+gem 'graphql'
 
 group :test do
   gem 'capybara'
@@ -49,6 +50,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'vcr'
   gem 'webmock'
+  gem 'rspec-graphql_matchers', git: 'https://github.com/khamusa/rspec-graphql_matchers', ref: '6633aa7'
 end
 
 group :development do
@@ -67,3 +69,5 @@ group :test, :development do
   gem 'simplecov'
   gem 'codecov'
 end
+
+gem 'graphiql-rails', group: :development
