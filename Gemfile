@@ -32,6 +32,7 @@ gem 'dry-initializer', git: 'https://github.com/dry-rb/dry-initializer.git', bra
 gem 'dry-struct', git: 'https://github.com/dry-rb/dry-struct.git', branch: 'master'
 gem 'dry-types', git: 'https://github.com/dry-rb/dry-types.git', branch: 'master'
 gem 'tinder_client', git: 'https://github.com/patrickclery/tinder_client.git', branch: 'master'
+gem 'graphql'
 
 group :test do
   gem 'capybara'
@@ -67,3 +68,5 @@ group :test, :development do
   gem 'simplecov'
   gem 'codecov'
 end
+
+gem 'graphiql-rails', group: :development
