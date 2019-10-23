@@ -1,27 +1,52 @@
 version: 2
 jobs:
   build:
-    parallelism: 1
+    working_directory: ~/circleci-demo-ruby-rails
+
+    # Primary container image where all commands run
+
     docker:
       - image: circleci/ruby:2.6.4
         environment:
-          BUNDLE_JOBS: 2
-          BUNDLE_RETRY: 3
-          BUNDLE_PATH: ~/.cache/bundler
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
+
+      # Service container image available at `host: localhost`
+
+      - image: circleci/postgres:11
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: circle-test_test
+
     steps:
       - checkout
-      - run:
-          name: bundle lock
-          command: mkdir -p ~/.cache; bundle lock --update
+
+      # Restore bundle cache
       - restore_cache:
-          key: bundle-{{ checksum "Gemfile.lock" }}
+          keys:
+            - rails-demo-{{ checksum "Gemfile.lock" }}
+            - rails-demo-
+
+      # Bundle install dependencies
       - run:
-          name: bundle install
-          command: bundle check &>/dev/null || bundle install
+          name: Install dependencies
+          command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3
+
+      - run: sudo apt install -y postgresql-client || true
+
+      # Store bundle cache
       - save_cache:
-          key: bundle-{{ checksum "Gemfile.lock" }}
+          key: rails-demo-{{ checksum "Gemfile.lock" }}
           paths:
-            - ~/.cache/bundler
+            - vendor/bundle
+
+      - run:
+          name: Database Setup
+          command: |
+            bundle exec rake db:create
+            bundle exec rake db:structure:load
+
       - run:
           name: rspec
           path: .
@@ -32,12 +57,8 @@ jobs:
                               --format progress \
                              $( circleci tests glob "spec/**/*_spec.rb" | \
                                 circleci tests split --split-by=timings )
+
+      # Save artifacts
       - store_test_results:
-          path: ~/rspec
-      - store_artifacts:
-          path: ~/rspec
-workflows:
-  version: 2
-  workflow:
-    jobs:
-      - build
+          path: /tmp/test-results
+
