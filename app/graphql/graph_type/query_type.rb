@@ -1,5 +1,5 @@
 module GraphType
-  class QueryType < Types::BaseObject
+  class QueryType < BaseObject
     graphql_name "Query"
     description "The root query"
 

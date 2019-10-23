@@ -1,5 +1,5 @@
 module GraphType
-  class RawDataType < Types::BaseObject
+  class RawDataType < BaseObject
     field :id, ID, null: false
     field :json, String, null: false
     field :tag, String, null: false
