@@ -108,5 +108,7 @@ require "#{gem_dir}/spec/tinder/contexts/http_request_stubs"
 # Extra
 require 'faker'
 
+# GraphQL Spec
+require 'rspec/graphql_matchers'
 
 
