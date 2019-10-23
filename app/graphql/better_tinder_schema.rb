@@ -1,3 +1,3 @@
 class BetterTinderSchema < GraphQL::Schema
-  query(Types::QueryType)
+  query(GraphType::QueryType)
 end

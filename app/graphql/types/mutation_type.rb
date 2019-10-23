@@ -1,4 +1,4 @@
-module Types
+module GraphType
   class MutationType < Types::BaseObject
     # TODO: remove me
     field :test_field, String, null: false,

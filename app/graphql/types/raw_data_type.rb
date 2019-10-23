@@ -1,4 +1,4 @@
-module Types
+module GraphType
   class RawDataType < Types::BaseObject
     field :id, ID, null: false
     field :json, String, null: false

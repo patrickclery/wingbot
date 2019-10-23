@@ -1,7 +1,7 @@
-module Types
+module GraphType
   module BaseInterface
     include GraphQL::Schema::Interface
 
-    field_class Types::BaseField
+    field_class GraphType::BaseField
   end
 end
