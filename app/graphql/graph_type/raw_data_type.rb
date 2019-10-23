@@ -3,8 +3,7 @@ module GraphType
     field :id, ID, null: false
     field :json, String, null: false
     field :tag, String, null: false
-    field :imported_at, String, null: false
-    field :created_at, String, null: false
-    field :deleted_at, String, null: true
+    field :created_at, GraphQL::Types::ISO8601DateTime, null: false
+    field :deleted_at, GraphQL::Types::ISO8601DateTime, null: true
   end
 end
