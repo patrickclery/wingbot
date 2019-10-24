@@ -12,7 +12,7 @@ Code Coverage: [![codecov](https://codecov.io/gh/patrickclery/better_tinder/bran
 - Save recommendations to your Rails database.
 - Browse your Tinder recommendations through GraphQL.
 
-### How to get started
+### Initial Setup
 
 1. Clone repo.
    
@@ -34,9 +34,37 @@ Code Coverage: [![codecov](https://codecov.io/gh/patrickclery/better_tinder/bran
    rails db:migrate
    ```
 
-4. Connect to GraphiQL
+### Saving data from Tinder
 
-   Open your browser to https://localhost.local:3000/graphiql and use GraphQL (the language itself) to interact with the data.
+Use rake tasks to save your data 
+
+  ```
+  rake tinder:save_token       # Save an API token to $token_path ake tinder:get_updates      # Fetch updates
+  rake tinder:save_recommendations  # Fetch recommendations
+  ```
+
+To grab a token, call a rake command & specify the `phone_number` or `api_token` in your environment variables.
+
+### `rake tinder:save_token`
+   
+  ```
+  $ rake tinder:save_token \
+  phone_number=15556667777 \
+  tinder_token_path=/tmp
+  Enter the confirmation code sent to 15556667777> 
+  123456
+  Validating...
+  Done!
+  Your refresh token is eyJhbGciOiJIUzI1NiJ9.MTc3ODk5MDk4MDM5q4R0H08rE0Dd9KgxMPp6jcTfIBLCXgEuVZfC9znJTE
+  Logging in...
+  Done!
+  Your tinder API token is 12a3bc45-a123-123a-1a23-1234abc4de5f
+  Saved to /tmp/tinder_access_token.txt
+  ```
+
+## Accessing your data
+
+Start rails `rails s`, then open your browser to https://localhost.local:3000/graphiql and use GraphQL (the language itself) to interact with the data.
    
    ```graphql
    {
