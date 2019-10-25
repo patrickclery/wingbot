@@ -1,5 +1,3 @@
-require 'tinder/client'
-
 class SaveUpdates
 
   # Fetches the latest updates and handles errors
