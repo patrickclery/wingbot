@@ -13,7 +13,7 @@ require 'rspec/rails'
 ### General
 RSpec.configure do |config|
   config.order        = :random
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_path = "#{Rails.root}/spec/fixtures"
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 
@@ -41,13 +41,6 @@ Shoulda::Matchers.configure do |config|
 end
 
 ###############################################################################
-### FactoryBot
-
-RSpec.configure do |config|
-  config.include FactoryBot::Syntax::Methods
-end
-
-###############################################################################
 ### DatabaseCleaner
 RSpec.configure do |config|
 
@@ -55,12 +48,6 @@ RSpec.configure do |config|
     DatabaseCleaner.cleaning do
       example.run
     end
-  end
-
-  ###############################################################################
-  # set `:type` for services (Service Objects) directory
-  config.define_derived_metadata(file_path: Regexp.new('/spec/services/')) do |metadata|
-    metadata[:type] = :service
   end
 
 end

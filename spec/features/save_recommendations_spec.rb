@@ -7,10 +7,12 @@ RSpec.describe SaveRecommendations do
 
   it { should respond_to(:call).with_keywords(:api_token) }
 
-  it 'can save raw JSON data' do
+  it 'can create save raw data' do
+    expect { subject.call(api_token: api_token) }.to change { RawData.count }
+  end
 
-    result = subject.call(api_token: api_token)
-    expect(result).to be true
+  it 'returns true on success' do
+    expect(subject.call(api_token: api_token)).to be true
   end
 
 end
