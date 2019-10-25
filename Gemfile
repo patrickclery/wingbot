@@ -25,9 +25,6 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.2', require: false
-
 gem 'dry-initializer', git: 'https://github.com/dry-rb/dry-initializer.git', branch: 'master'
 gem 'dry-struct', git: 'https://github.com/dry-rb/dry-struct.git', branch: 'master'
 gem 'dry-types', git: 'https://github.com/dry-rb/dry-types.git', branch: 'master'
