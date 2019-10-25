@@ -11,7 +11,7 @@ class SaveRecommendations
       client           = Tinder::Client.new
       client.api_token = api_token
       client.get_recommended_users.each do |card| # Then loop through each card within the collection
-        RawData.create(data: card.to_json, tag: 'get_recommended_users')
+        RawData.create(data: card.to_json, tag: 'recommended_users')
       end
       true
     rescue StandardError => e
