@@ -3,7 +3,7 @@ require 'tinder/client'
 class SaveUpdates
 
   # Fetches the latest updates and handles errors
-  # @raise Exception if the request returns anything except cards/results
+  # @raise Exception if the request fails
   # @return Boolean true
   class << self
 
