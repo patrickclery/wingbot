@@ -11,11 +11,11 @@ class CreatePeople < ActiveRecord::Migration[6.0]
 
       # Collections
       t.text :common_friends
-      t.text :schools
-      t.text :teaser
+      t.text :instagram_photos
       t.text :jobs
       t.text :photos
-      t.text :instagram_photos
+      t.text :schools
+      t.text :teaser
 
       # Keys provided by tinder
       t.string :match_id
