@@ -2,71 +2,9 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 
-### Support for CodeCov
-SimpleCov.start
-SimpleCov.formatter = SimpleCov::Formatter::Codecov
-
-# Prevent database truncation if the environment is production
-require 'rspec/rails'
-
-###############################################################################
-### General
-RSpec.configure do |config|
-  config.order        = :random
-  config.fixture_path = "#{Rails.root}/spec/fixtures"
-  config.infer_spec_type_from_file_location!
-  config.filter_rails_from_backtrace!
-
-  config.include ActiveSupport::Testing::TimeHelpers
-
-  config.example_status_persistence_file_path = ".rspec_status"
-
-  # Disable RSpec exposing methods globally on `Module` and `main`
-  config.disable_monkey_patching!
-
-  config.expect_with :rspec do |c|
-    c.syntax = :expect
-  end
-end
-
-###############################################################################
-### Shoulda::Matchers
-require 'shoulda/matchers'
-
-Shoulda::Matchers.configure do |config|
-  config.integrate do |with|
-    with.test_framework :rspec
-    with.library :rails
-  end
-end
-
-###############################################################################
-### FactoryBot
-require 'factory_bot_rails'
-require 'factory_bot'
-
-RSpec.configure do |config|
-  config.include FactoryBot::Syntax::Methods
-end
-
-###############################################################################
-### DatabaseCleaner
-RSpec.configure do |config|
-
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
-    end
-  end
-
-end
-
-# Borrow the shared stubs from the tinder client
-gem_dir = Gem::Specification.find_by_name("tinder_client").gem_dir
-require "#{gem_dir}/spec/tinder/contexts/http_request_stubs"
-
-# Shared contexts
-Dir['./spec/contexts/**.rb'].each do |f|
-  require f.sub(%r|\./spec/|, '')
-end
-
+require 'support/simplecov'
+require 'support/rspec'
+require 'support/shoulda_matchers'
+require 'support/factory_bot'
+require 'support/database_cleaner'
+require 'support/tinder_client'
