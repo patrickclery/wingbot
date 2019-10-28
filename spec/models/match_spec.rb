@@ -2,11 +2,6 @@ RSpec.describe Match, type: :model do
 
   include_context 'raw data'
 
-  let!(:updates) do
-    gem_dir    = Gem::Specification.find_by_name("tinder_client").gem_dir
-    json_parse = JSON.parse(File.read(File.join("#{gem_dir}/spec/tinder/fixtures/updates.json")))
-    Tinder::Updates.new(json_parse)
-  end
   let!(:match) { updates.matches.sample }
 
   it { should have_attribute(:common_friend_count) }

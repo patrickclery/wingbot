@@ -4,11 +4,11 @@ class RawData < ApplicationRecord
 
   # @return Tinder::Updates A struct containing Tinder account data
   def to_updates
-    Tinder::Updates.new(JSON.parse(data))
+    Tinder::Updates.new(data)
   end
 
   # @return Tinder::Recommendations A struct containing Tinder account data
   def to_recommendation
-    Tinder::Recommendation.new(JSON.parse(data))
+    Tinder::Recommendation.new(data)
   end
 end
