@@ -3,15 +3,15 @@ class CreateMatches < ActiveRecord::Migration[6.0]
     create_table :matches do |t|
       t.belongs_to :people
 
+      t.boolean :is_boost_match
       t.boolean :is_closed
       t.boolean :is_dead
+      t.boolean :is_fast_match
       t.boolean :is_following
       t.boolean :is_following_moments
-      t.boolean :is_boost_match
-      t.boolean :is_fast_match
-      t.boolean :is_super_like
       t.boolean :is_muted
       t.boolean :is_pending
+      t.boolean :is_super_like
 
       t.integer :common_friend_count
       t.integer :common_like_count
