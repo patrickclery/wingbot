@@ -18,14 +18,15 @@ ActiveRecord::Schema.define(version: 2019_10_26_235551) do
   create_table "people", force: :cascade do |t|
     t.date "birthdate"
     t.integer "distance_mi"
+    t.string "gender"
     t.string "instagram_id"
     t.string "instagram_username"
-    t.string "common_friends"
-    t.string "gender"
+    t.text "bio"
     t.string "name"
+    t.string "common_friends"
     t.string "schools"
     t.string "teaser"
-    t.text "bio"
+    t.string "jobs"
     t.text "photos"
     t.text "instagram_photos"
     t.string "match_id"
@@ -35,6 +36,9 @@ ActiveRecord::Schema.define(version: 2019_10_26_235551) do
     t.datetime "deleted_at"
     t.datetime "muted_at"
     t.datetime "updated_at"
+    t.boolean "is_traveling"
+    t.boolean "hide_age"
+    t.boolean "hide_distance"
   end
 
   create_table "raw_data", force: :cascade do |t|

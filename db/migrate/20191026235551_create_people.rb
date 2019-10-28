@@ -3,16 +3,17 @@ class CreatePeople < ActiveRecord::Migration[6.0]
     create_table :people do |t|
       t.date :birthdate
       t.integer :distance_mi
+      t.string :gender
       t.string :instagram_id
       t.string :instagram_username
+      t.text :bio
+      t.string :name
 
       # Collections
       t.string :common_friends
-      t.string :gender
-      t.string :name
       t.string :schools
       t.string :teaser
-      t.text :bio
+      t.string :jobs
       t.text :photos
       t.text :instagram_photos
 
@@ -26,6 +27,11 @@ class CreatePeople < ActiveRecord::Migration[6.0]
       t.timestamp :deleted_at
       t.timestamp :muted_at
       t.timestamp :updated_at
+
+      # Flags
+      t.boolean :is_traveling
+      t.boolean :hide_age
+      t.boolean :hide_distance
     end
   end
 end

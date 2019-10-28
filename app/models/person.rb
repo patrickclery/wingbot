@@ -14,7 +14,6 @@ class Person < ApplicationRecord
           schools:   recommendation.user.schools,
           name:      recommendation.user.name
     end
-
   end
 
 end
