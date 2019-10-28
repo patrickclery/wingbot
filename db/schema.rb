@@ -17,19 +17,19 @@ ActiveRecord::Schema.define(version: 2019_10_28_073431) do
 
   create_table "matches", force: :cascade do |t|
     t.bigint "people_id"
+    t.boolean "is_boost_match"
     t.boolean "is_closed"
     t.boolean "is_dead"
+    t.boolean "is_fast_match"
     t.boolean "is_following"
     t.boolean "is_following_moments"
-    t.boolean "is_boost_match"
-    t.boolean "is_fast_match"
-    t.boolean "is_super_like"
     t.boolean "is_muted"
     t.boolean "is_pending"
+    t.boolean "is_super_like"
     t.integer "common_friend_count"
     t.integer "common_like_count"
-    t.string "matched_at"
     t.string "last_active_at"
+    t.string "matched_at"
     t.string "participants"
     t.string "readreceipt"
     t.string "seen"
@@ -47,14 +47,14 @@ ActiveRecord::Schema.define(version: 2019_10_28_073431) do
     t.string "gender"
     t.string "instagram_id"
     t.string "instagram_username"
-    t.text "bio"
     t.string "name"
-    t.string "common_friends"
-    t.string "schools"
-    t.string "teaser"
-    t.string "jobs"
-    t.text "photos"
+    t.text "bio"
+    t.text "common_friends"
     t.text "instagram_photos"
+    t.text "jobs"
+    t.text "photos"
+    t.text "schools"
+    t.text "teaser"
     t.string "match_id"
     t.string "tinder_id"
     t.datetime "active_at"
@@ -68,9 +68,9 @@ ActiveRecord::Schema.define(version: 2019_10_28_073431) do
   end
 
   create_table "raw_data", force: :cascade do |t|
+    t.datetime "imported_at"
     t.json "data"
     t.string "tag"
-    t.datetime "imported_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
