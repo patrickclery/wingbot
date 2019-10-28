@@ -24,7 +24,6 @@ RSpec.describe Match, type: :model do
   it { should have_attribute(:tinder_match_id) }
 
   context '#from_match' do
-    shared_context 'http request stubs'
     subject { described_class.from_match(match: match) }
     it { should be_a(Match) }
   end
