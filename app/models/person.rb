@@ -1,17 +1,18 @@
 class Person < ApplicationRecord
-
+  has_many :matches
   serialize :photos
 
   class << self
-    def from_recommendation(recommendation:)
+    # @param Tinder::User pass a User struct from a recommendation
+    def from_user(user:)
       # Mass assign everything
-      new birthdate: recommendation.user.birth_date,
-          tinder_id: recommendation.user._id,
-          bio:       recommendation.user.bio,
-          name:      recommendation.user.name,
-          photos:    recommendation.user.photos,
-          gender:    recommendation.user.gender,
-          schools:   recommendation.user.schools
+      new birthdate: user.birth_date,
+          tinder_id: user._id,
+          bio:       user.bio,
+          name:      user.name,
+          photos:    user.photos,
+          gender:    user.gender,
+          schools:   user.schools
     end
   end
 

@@ -14,9 +14,9 @@ RSpec.describe Person, type: :model do
   it { should have_attribute(:hide_age) }
   it { should have_attribute(:hide_distance) }
 
-  context '#from_recommendation' do
+  context '#from_user' do
     subject do
-      described_class.from_recommendation(recommendation: recommendation.to_recommendation)
+      described_class.from_user(user: recommendation.to_recommendation.user)
     end
     it { should be_a(Person) }
   end
