@@ -11,8 +11,7 @@ class Person < ApplicationRecord
           name:      recommendation.user.name,
           photos:    recommendation.user.photos,
           gender:    recommendation.user.gender,
-          schools:   recommendation.user.schools,
-          name:      recommendation.user.name
+          schools:   recommendation.user.schools
     end
   end
 

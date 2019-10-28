@@ -65,5 +65,8 @@ end
 gem_dir = Gem::Specification.find_by_name("tinder_client").gem_dir
 require "#{gem_dir}/spec/tinder/contexts/http_request_stubs"
 
-
+# Shared contexts
+Dir['./spec/contexts/**.rb'].each do |f|
+  require f.sub(%r|\./spec/|, '')
+end
 

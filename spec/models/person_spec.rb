@@ -1,7 +1,6 @@
 RSpec.describe Person, type: :model do
 
-  let!(:raw_datas) { create_list(:raw_data_recommendation, 3) }
-  let!(:recommendation) { raw_datas.sample }
+  include_context 'raw data'
 
   it { should have_attribute(:birthdate) }
   it { should have_attribute(:tinder_id) }

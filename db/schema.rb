@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_26_235551) do
+ActiveRecord::Schema.define(version: 2019_10_28_073431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "matches", force: :cascade do |t|
+    t.bigint "people_id"
+    t.boolean "is_closed"
+    t.boolean "is_dead"
+    t.boolean "is_following"
+    t.boolean "is_following_moments"
+    t.boolean "is_boost_match"
+    t.boolean "is_fast_match"
+    t.boolean "is_super_like"
+    t.boolean "is_muted"
+    t.boolean "is_pending"
+    t.integer "common_friend_count"
+    t.integer "common_like_count"
+    t.string "matched_at"
+    t.string "last_active_at"
+    t.string "participants"
+    t.string "readreceipt"
+    t.string "seen"
+    t.string "tinder_match_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "person_id"
+    t.index ["people_id"], name: "index_matches_on_people_id"
+    t.index ["person_id"], name: "index_matches_on_person_id"
+  end
 
   create_table "people", force: :cascade do |t|
     t.date "birthdate"
@@ -49,4 +75,5 @@ ActiveRecord::Schema.define(version: 2019_10_26_235551) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "matches", "people"
 end
