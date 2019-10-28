@@ -3,8 +3,9 @@ require 'factory_bot_rails'
 
 FactoryBot.define do
   factory :raw_data do
-    data {
-      <<JSON
+    factory :raw_data_recommendation do
+      data {
+        <<JSON
 {
   "type": "user",
   "user": {
@@ -51,6 +52,7 @@ FactoryBot.define do
   "teasers": []
 }
 JSON
-    }
+      }
+    end
   end
 end
