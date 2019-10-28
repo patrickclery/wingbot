@@ -8,7 +8,7 @@ RSpec.describe RawData, type: :model do
 
   context '#to_recommendation' do
     subject { create(:raw_data_recommendation).to_recommendation }
-    it { is_expected.to be_an(Tinder::Recommendation) }
+    it { is_expected.to be_a(Tinder::Recommendation) }
   end
 
   context '#to_updates' do
