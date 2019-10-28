@@ -26,7 +26,6 @@ class CreatePeople < ActiveRecord::Migration[6.0]
       t.timestamp :deleted_at
       t.timestamp :muted_at
       t.timestamp :updated_at
-
     end
   end
 end

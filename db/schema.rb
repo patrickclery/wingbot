@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_30_083654) do
+ActiveRecord::Schema.define(version: 2019_10_26_235551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "people", force: :cascade do |t|
+    t.date "birthdate"
+    t.integer "distance_mi"
+    t.string "instagram_id"
+    t.string "instagram_username"
+    t.string "common_friends"
+    t.string "gender"
+    t.string "name"
+    t.string "schools"
+    t.string "teaser"
+    t.text "bio"
+    t.text "photos"
+    t.text "instagram_photos"
+    t.string "match_id"
+    t.string "tinder_id"
+    t.datetime "active_at"
+    t.datetime "created_at"
+    t.datetime "deleted_at"
+    t.datetime "muted_at"
+    t.datetime "updated_at"
+  end
 
   create_table "raw_data", force: :cascade do |t|
     t.json "data"

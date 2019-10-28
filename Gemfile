@@ -28,8 +28,6 @@ gem 'tinder_client', git: 'https://github.com/patrickclery/tinder_client.git', b
 gem 'graphql'
 
 group :test do
-  gem 'capybara'
-  gem 'webdrivers'
   gem 'database_cleaner'
   gem 'rspec', '~> 3.8'
   gem 'rspec-core', '~> 3.8'
@@ -39,6 +37,8 @@ group :test do
   gem 'shoulda-matchers'
   gem 'webmock'
   gem 'rspec-graphql_matchers', git: 'https://github.com/khamusa/rspec-graphql_matchers', ref: '6633aa7'
+  gem 'factory_bot'
+  gem 'factory_bot_rails'
 end
 
 group :development do
