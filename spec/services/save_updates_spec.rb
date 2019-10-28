@@ -1,4 +1,4 @@
-RSpec.describe SaveRecommendations do
+RSpec.describe SaveUpdates do
   # Borrow the http request stubs from tinder_client gem.
   include_context 'http request stubs'
   subject { described_class }
@@ -8,7 +8,7 @@ RSpec.describe SaveRecommendations do
   it { should respond_to(:call).with_keywords(:api_token) }
 
   it 'can create save raw data' do
-    expect { subject.call(api_token: api_token) }.to change { RawData.count }.by(4)
+    expect { subject.call(api_token: api_token) }.to change { RawData.count }.by(1)
   end
 
   it 'returns true on success' do

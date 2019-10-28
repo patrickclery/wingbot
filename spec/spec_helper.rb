@@ -41,6 +41,15 @@ Shoulda::Matchers.configure do |config|
 end
 
 ###############################################################################
+### FactoryBot
+require 'factory_bot_rails'
+require 'factory_bot'
+
+RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
+end
+
+###############################################################################
 ### DatabaseCleaner
 RSpec.configure do |config|
 
