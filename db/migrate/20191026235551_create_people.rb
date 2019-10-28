@@ -3,19 +3,19 @@ class CreatePeople < ActiveRecord::Migration[6.0]
     create_table :people do |t|
       t.date :birthdate
       t.integer :distance_mi
+      t.string :bio
       t.string :gender
       t.string :instagram_id
       t.string :instagram_username
-      t.text :bio
       t.string :name
 
       # Collections
       t.string :common_friends
+      t.string :instagram_photos
+      t.string :jobs
+      t.string :photos
       t.string :schools
       t.string :teaser
-      t.string :jobs
-      t.text :photos
-      t.text :instagram_photos
 
       # Keys provided by tinder
       t.string :match_id
