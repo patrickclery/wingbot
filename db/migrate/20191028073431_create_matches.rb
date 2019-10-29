@@ -3,6 +3,8 @@ class CreateMatches < ActiveRecord::Migration[6.0]
     create_table :matches do |t|
       t.belongs_to :people
 
+      t.integer :common_friend_count
+      t.integer :common_like_count
       t.boolean :is_boost_match
       t.boolean :is_closed
       t.boolean :is_dead
@@ -12,16 +14,12 @@ class CreateMatches < ActiveRecord::Migration[6.0]
       t.boolean :is_muted
       t.boolean :is_pending
       t.boolean :is_super_like
-
-      t.integer :common_friend_count
-      t.integer :common_like_count
-
-      t.string :last_active_at
-      t.string :matched_at
-      t.string :participants
-      t.string :readreceipt
-      t.string :seen
-      t.string :tinder_match_id # This is the ID used by tinder
+      t.string  :last_active_at
+      t.string  :matched_at
+      t.string  :participants
+      t.string  :readreceipt
+      t.string  :seen
+      t.string  :tinder_match_id
 
       t.timestamps
     end

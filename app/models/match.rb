@@ -4,8 +4,6 @@ class Match < ApplicationRecord
   serialize :photos
 
   def self.from_match(match:)
-    # Mass assign everything
-
     new is_following:         match.following,
         is_following_moments: match.following_moments,
         is_boost_match:       match.is_boost_match,

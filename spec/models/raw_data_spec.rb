@@ -12,7 +12,7 @@ RSpec.describe RawData, type: :model do
 
   context '#to_updates' do
     subject { create(:raw_data_updates).to_updates }
-    it { is_expected.to be_an(Tinder::Updates) }
+    it { is_expected.to be_a(Tinder::Updates) }
   end
 
 end
