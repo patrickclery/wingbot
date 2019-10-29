@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 2019_10_29_053335) do
 
   create_table "matches", force: :cascade do |t|
     t.bigint "people_id"
+    t.integer "common_friend_count"
+    t.integer "common_like_count"
     t.boolean "is_boost_match"
     t.boolean "is_closed"
     t.boolean "is_dead"
@@ -26,8 +28,6 @@ ActiveRecord::Schema.define(version: 2019_10_29_053335) do
     t.boolean "is_muted"
     t.boolean "is_pending"
     t.boolean "is_super_like"
-    t.integer "common_friend_count"
-    t.integer "common_like_count"
     t.string "last_active_at"
     t.string "matched_at"
     t.string "participants"
@@ -42,17 +42,17 @@ ActiveRecord::Schema.define(version: 2019_10_29_053335) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.datetime "sent_at"
+    t.text "content"
+    t.datetime "deleted_at"
     t.integer "from_id"
     t.integer "person_id"
     t.integer "reply_id"
-    t.integer "to_id"
+    t.datetime "sent_at"
     t.string "tinder_id"
     t.string "tinder_match_id"
     t.string "tinder_message_id"
-    t.text "content"
     t.datetime "tinder_timestamp"
-    t.datetime "deleted_at"
+    t.integer "to_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
