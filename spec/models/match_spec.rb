@@ -25,5 +25,9 @@ RSpec.describe Match, type: :model do
     subject { described_class.from_match(match: match) }
     it { should be_a(Match) }
   end
+  context '#from_updates' do
+    subject { described_class.from_updates(updates: updates) }
+    it { should be_an(Array) }
+  end
 
 end

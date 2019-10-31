@@ -3,6 +3,7 @@ class Match < ApplicationRecord
 
   serialize :photos
 
+  # @param Tinder::Match
   def self.from_match(match:)
     new is_following:         match.following,
         is_following_moments: match.following_moments,
@@ -20,6 +21,11 @@ class Match < ApplicationRecord
         participants:         match.participants,
         readreceipt:          match.readreceipt,
         seen:                 match.seen
+  end
+
+  # @param Tinder::Updates
+  def self.from_updates(updates:)
+    updates.matches.map {|m| from_match(match: m) }
   end
 
 end

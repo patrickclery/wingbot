@@ -8,4 +8,10 @@ RSpec.describe Account, type: :model do
   it { should have_db_column(:is_active).of_type(:boolean) }
   it { should have_db_column(:is_email_verified).of_type(:boolean) }
 
+  describe '#from_profile' do
+    subject { described_class.from_profile(profile: profile) }
+    it { should be_a(described_class) }
+    it { expect { subject }.to change { Account.count }.by(1) }
+  end
+
 end
