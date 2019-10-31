@@ -10,10 +10,6 @@ RSpec.describe Profile, type: :model do
     it { should have_db_column(:data).of_type(:json) }
   end
 
-  describe 'model' do
-    it { should serialize(:data) }
-  end
-
   describe '#from_profile' do
     subject { described_class.from_profile(profile: profile) }
     it { should be_a(described_class) }

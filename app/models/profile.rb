@@ -1,6 +1,5 @@
 class Profile < ApplicationRecord
   belongs_to :account
-  serialize :data
 
   # @param Tinder::ActiveProfile pass a profile (ActiveProfile)
   def self.from_profile(profile:)
