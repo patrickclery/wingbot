@@ -6,7 +6,7 @@ RSpec.describe RawData, type: :model do
   it { should respond_to(:to_recommendations) }
 
   context '#to_recommendations' do
-    subject { raw_data_recommendation.to_recommendations }
+    subject { raw_data_recommendations.to_recommendations }
     it { should be_an(Array) }
   end
 

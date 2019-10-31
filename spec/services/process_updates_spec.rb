@@ -1,7 +1,7 @@
 RSpec.describe ProcessUpdates, type: :service do
   include_context 'raw data'
   include_context 'default'
-  subject { described_class.call(api_token: api_token) }
+  subject { described_class.call }
 
   before { create(:account) }
 
