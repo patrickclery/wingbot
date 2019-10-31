@@ -7,7 +7,7 @@ RSpec.describe RawData, type: :model do
 
   context '#to_recommendations' do
     subject { raw_data_recommendation.to_recommendations }
-    it { is_expected.to be_an(Array).of(Tinder::Recommendation) }
+    it { should be_an(Array) }
   end
 
   context '#to_updates' do

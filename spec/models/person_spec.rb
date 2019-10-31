@@ -16,7 +16,7 @@ RSpec.describe Person, type: :model do
 
   context '#from_user' do
     subject do
-      described_class.from_user(user: recommendation.to_recommendations.user)
+      described_class.from_user(user: recommendations.first.user)
     end
     it { should be_a(Person) }
   end
