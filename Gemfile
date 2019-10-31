@@ -39,6 +39,7 @@ group :test do
   gem 'rspec-graphql_matchers', git: 'https://github.com/khamusa/rspec-graphql_matchers', ref: '6633aa7'
   gem 'factory_bot'
   gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
