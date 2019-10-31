@@ -17,7 +17,7 @@ RSpec.configure do |config|
   end
 end
 
-# Shared contexts
-Dir['./spec/contexts/**.rb'].each do |f|
+# Shared contexts and behaviors
+Dir['./spec/{contexts,behaviors}/**.rb'].each do |f|
   require f.sub(%r|\./spec/|, '')
 end
