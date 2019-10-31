@@ -15,5 +15,5 @@ RSpec.shared_context 'raw data' do
   let(:raw_profile) { raw_profiles.sample }
   let(:profile) { Tinder::ActiveProfile.new(raw_profile.data) }
 
-  let(:account) { Tinder::ActiveProfile.new(profile.data).account }
+  let(:account) { Tinder::ActiveProfile.new(raw_profile.data).account }
 end
