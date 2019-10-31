@@ -1,10 +1,10 @@
 RSpec.shared_context 'raw data' do
-  let!(:raw_datas) { create_list(:raw_data_recommendation, 3) }
-  let!(:recommendation) { raw_datas.sample }
-
-  let!(:updates) do
-    gem_dir    = Gem::Specification.find_by_name("tinder_client").gem_dir
-    json_parse = JSON.parse(File.read(File.join("#{gem_dir}/spec/tinder/fixtures/updates.json")))
-    Tinder::Updates.new(json_parse)
-  end
+  let(:raw_updates) { create_list(:raw_data_updates, 3) }
+  let(:raw_profiles) { create_list(:raw_data_profile, 3) }
+  let(:recommendation) { create(:raw_data_recommendation) }
+  let(:updates) { raw_updates.sample }
+  let(:profile) { raw_profiles.sample }
+  let(:match) { updates['matches'].sample }
+  let(:account) { profile['account'] }
+  # let(:account) { Tinder::ActiveProfile.new(profile.data).account }
 end

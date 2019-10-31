@@ -18,7 +18,6 @@ class CreatePeople < ActiveRecord::Migration[6.0]
       t.text :teaser
 
       # Keys provided by tinder
-      t.string :match_id
       t.string :tinder_id
 
       # Timestamps

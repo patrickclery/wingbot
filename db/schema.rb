@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_29_053335) do
+ActiveRecord::Schema.define(version: 2019_10_30_022042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: :cascade do |t|
+    t.boolean "is_email_verified"
+    t.boolean "is_active"
+    t.string "email"
+    t.string "name"
+    t.string "phone_number"
+    t.string "tinder_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "matches", force: :cascade do |t|
     t.bigint "people_id"
@@ -71,7 +82,6 @@ ActiveRecord::Schema.define(version: 2019_10_29_053335) do
     t.text "photos"
     t.text "schools"
     t.text "teaser"
-    t.string "match_id"
     t.string "tinder_id"
     t.datetime "active_at"
     t.datetime "created_at"
@@ -83,13 +93,24 @@ ActiveRecord::Schema.define(version: 2019_10_29_053335) do
     t.boolean "hide_distance"
   end
 
-  create_table "raw_data", force: :cascade do |t|
-    t.datetime "imported_at"
+  create_table "profiles", force: :cascade do |t|
+    t.boolean "is_active"
     t.json "data"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "account_id"
+    t.index ["account_id"], name: "index_profiles_on_account_id"
+  end
+
+  create_table "raw_data", force: :cascade do |t|
+    t.json "data"
+    t.datetime "imported_at"
     t.string "tag"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "matches", "people"
+  add_foreign_key "profiles", "accounts"
 end

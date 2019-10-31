@@ -2,8 +2,6 @@ RSpec.describe Match, type: :model do
 
   include_context 'raw data'
 
-  let!(:match) { updates.matches.sample }
-
   it { should have_attribute(:common_friend_count) }
   it { should have_attribute(:common_like_count) }
   it { should have_attribute(:is_boost_match) }
