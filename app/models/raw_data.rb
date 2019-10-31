@@ -8,7 +8,7 @@ class RawData < ApplicationRecord
   end
 
   # @return Tinder::Recommendations A struct containing Tinder account data
-  def to_recommendation
-    Tinder::Recommendation.new(data)
+  def to_recommendations
+    data.map { |rec| Tinder::Recommendation.new(rec.data) }
   end
 end
