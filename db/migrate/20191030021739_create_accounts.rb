@@ -7,6 +7,7 @@ class CreateAccounts < ActiveRecord::Migration[6.0]
       t.string :name
       t.string :phone_number
       t.string :tinder_id
+      t.datetime :last_active_at
       t.timestamps
     end
   end
