@@ -6,6 +6,7 @@ require 'support/simplecov'
 require 'dry-struct'
 
 require 'support/rspec'
+require 'support/dry-rb'
 require 'support/shoulda_matchers'
 require 'support/factory_bot'
 require 'support/faker'

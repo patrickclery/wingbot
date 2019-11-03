@@ -1,3 +1,5 @@
+require 'tinder/client'
+
 class ProcessRawData
 
   # @raise Exception
@@ -5,10 +7,10 @@ class ProcessRawData
   class << self
 
     def call
+      ProcessProfiles.call
+      ProcessRecommendations.call
       ProcessUpdates.call
       true
-    rescue StandardError => e
-      fail "Failed: #{e.message}"
     end
 
   end
