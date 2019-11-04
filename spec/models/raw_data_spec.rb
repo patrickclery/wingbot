@@ -1,4 +1,5 @@
 RSpec.describe RawData, type: :model do
+
   let(:raw_recommendations) { create(:raw_data_recommendations) }
   let(:raw_updates) { create(:raw_data_updates) }
   let(:raw_profile) { create(:raw_data_profile) }

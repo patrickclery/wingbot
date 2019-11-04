@@ -1,6 +1,8 @@
 RSpec.describe Profile, type: :model do
 
-  include_context 'raw data'
+  let(:account) { create(:account) }
+  let(:raw_profile) { create(:raw_data_profile) }
+  let(:profile) { raw_profile.to_profile }
 
   describe 'schema' do
     it { should belong_to(:account) }
@@ -11,13 +13,12 @@ RSpec.describe Profile, type: :model do
   end
 
   describe '#from_profile' do
-    subject { Profile.from_profile(profile) }
+    subject { Profile.from_profile(raw_profile.to_profile) }
     it { expect(subject).to be_a(Profile) }
-
-    it 'creates a new profile on an existing account' do
-      subject.account = basic_account
-      expect { subject.save }.to change { Profile.count }.by(1)
-    end
   end
 
+  it 'creates a new profile on an existing account' do
+    subject.account = account
+    expect { subject.save }.to change { Profile.count }.by(1)
+  end
 end

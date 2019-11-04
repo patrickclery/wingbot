@@ -13,4 +13,8 @@ class Person < ApplicationRecord
         tinder_id: user._id
   end
 
+  def self.from_match(match:)
+
+  end
+
 end

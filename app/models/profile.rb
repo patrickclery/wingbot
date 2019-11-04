@@ -7,4 +7,5 @@ class Profile < ApplicationRecord
         is_active:  false,
         data:       profile.user.to_json
   end
+
 end

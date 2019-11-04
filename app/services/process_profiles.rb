@@ -7,7 +7,7 @@ class ProcessProfiles
 
     def call
       RawData.where(imported_at: nil, tag: 'profile').each do |rec|
-        CreateAccountFromProfile.call(rec.data)
+        CreateAccountFromProfile.call(rec.to_profile)
       end
       true
     end
