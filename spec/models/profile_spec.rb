@@ -11,8 +11,8 @@ RSpec.describe Profile, type: :model do
   end
 
   describe '#from_profile' do
-    subject { described_class.from_profile(profile) }
-    it { expect(subject).to be_a(described_class) }
+    subject { Profile.from_profile(profile) }
+    it { expect(subject).to be_a(Profile) }
 
     it 'creates a new profile on an existing account' do
       subject.account = basic_account

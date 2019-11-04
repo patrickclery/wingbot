@@ -1,5 +1,5 @@
 RSpec.describe RawData, type: :model do
-
+  include Tinder
   include_context 'raw data'
 
   it { should respond_to(:to_updates) }
@@ -12,7 +12,12 @@ RSpec.describe RawData, type: :model do
 
   context '#to_updates' do
     subject { create(:raw_data_updates).to_updates }
-    it { is_expected.to be_a(Tinder::Updates) }
+    it { should be_an(Tinder::Updates) }
+  end
+
+  context '#to_profile' do
+    subject { create(:raw_data_profile).to_profile }
+    it { should be_a(Tinder::ActiveProfile) }
   end
 
 end
