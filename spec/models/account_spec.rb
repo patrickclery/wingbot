@@ -1,5 +1,8 @@
 RSpec.describe Account, type: :model do
-  include_context 'raw data'
+
+  let(:raw_recommendations) { create(:raw_data_recommendations) }
+  let(:raw_updates) { create(:raw_data_updates) }
+  let(:raw_profile) { create(:raw_data_profile) }
 
   it { should have_many(:profiles) }
   it { should have_db_column(:tinder_id).of_type(:string) }
@@ -11,7 +14,7 @@ RSpec.describe Account, type: :model do
   it { should have_db_column(:last_active_at).of_type(:datetime) }
 
   describe '#from_profile' do
-    subject { Account.from_profile(profile) }
+    subject { Account.from_profile(raw_profile.to_profile) }
     it { expect(subject).to be_a(Account) }
 
     describe '#save' do

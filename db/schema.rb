@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2019_10_30_022042) do
     t.string "phone_number"
     t.string "tinder_id"
     t.datetime "last_active_at"
+    t.json "data"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
