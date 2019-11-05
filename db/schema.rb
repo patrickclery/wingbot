@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_04_110000) do
+ActiveRecord::Schema.define(version: 2019_11_05_060000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,9 +70,10 @@ ActiveRecord::Schema.define(version: 2019_11_04_110000) do
     t.string "tinder_match_id"
     t.string "tinder_message_id"
     t.datetime "tinder_timestamp"
-    t.integer "to_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "match_id", null: false
+    t.index ["match_id"], name: "index_messages_on_match_id"
   end
 
   create_table "people", force: :cascade do |t|

@@ -11,6 +11,8 @@ class ProcessUpdates
           updates.matches.each do |match|
             Match.from_match(match).save!
           end
+          updates.messages.each do |message|
+            Message.from_message(message).save!
         end
         rec.mark_as_imported!
       end

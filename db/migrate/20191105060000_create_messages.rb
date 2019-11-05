@@ -11,8 +11,8 @@ class CreateMessages < ActiveRecord::Migration[6.0]
       t.string    :tinder_match_id
       t.string    :tinder_message_id
       t.timestamp :tinder_timestamp
-      t.integer   :to_id
       t.timestamps
     end
+    add_reference :messages, :match, null: false
   end
 end

@@ -3,7 +3,7 @@ class Message < ApplicationRecord
 
   serialize :photos
 
-  def self.from_message(message:)
+  def self.from_message(message)
     new content:           message.message,
         created_at:        message.created_date,
         from_id:           message.from,

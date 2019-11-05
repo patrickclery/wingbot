@@ -1,20 +1,30 @@
 RSpec.describe Message, type: :model do
 
-  include_context 'raw data'
+  let!(:account) { create(:account) }
+  let!(:person) { create(:person, tinder_id: '89038190283xjfklsdjklfjs') }
+  let!(:raw_updates) { create(:raw_data_updates) }
+  let!(:updates) { raw_updates.to_updates }
+  let!(:matches) { updates.matches }
+  let!(:match) do
+    obj = updates.matches.sample
+    allow(obj).to receive(:_id).and_return('89038190283xjfklsdjklfjs89038190283xjfklsdjklfjs')
+    obj
+  end
 
   let(:message) { updates.matches.select{|match| match.messages.count.positive? }.sample.messages.first }
 
-  it { should have_attribute(:content) }
-  it { should have_attribute(:created_at) }
-  it { should have_attribute(:deleted_at) }
-  it { should have_attribute(:from_id) }
-  it { should have_attribute(:reply_id) }
-  it { should have_attribute(:sent_at) }
-  it { should have_attribute(:tinder_match_id) }
-  it { should have_attribute(:tinder_message_id) }
-  it { should have_attribute(:tinder_timestamp) }
-  it { should have_attribute(:to_id) }
-  it { should have_attribute(:updated_at) }
+  it { should belong_to(:match) }
+  it { should have_db_column(:content) }
+  it { should have_db_column(:created_at) }
+  it { should have_db_column(:deleted_at) }
+  it { should have_db_column(:from_id).of_type(:integer) }
+  it { should have_db_column(:reply_id) }
+  it { should have_db_column(:sent_at) }
+  it { should have_db_column(:tinder_message_id) }
+  it { should have_db_column(:tinder_timestamp) }
+  it { should have_db_column(:tinder_timestamp) }
+  it { should have_db_column(:to_id) }
+  it { should have_db_column(:updated_at) }
 
   context '#from_message' do
     subject { described_class.from_message(message: message) }
