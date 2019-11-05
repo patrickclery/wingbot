@@ -5,7 +5,7 @@ class ProcessRecommendations
   # @return Boolean true
   # @param Tinder::Account Pass the account struct in
   def self.call
-    RawData.where(imported_at: nil, tag: 'profile').each do |rec|
+    RawData.where(imported_at: nil, tag: 'recommendations').each do |rec|
       rec.to_recommendations.each do |recommendation|
         CreatePersonFromRecommendation.call(recommendation)
       end

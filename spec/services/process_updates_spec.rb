@@ -1,7 +1,6 @@
 RSpec.describe ProcessUpdates, type: :service do
 
-  include_context 'raw data'
-  include_examples 'service object'
+
 
   it { expect(subject).to be true }
   it { expect { subject }.to change { Match.count }.by(4) }
