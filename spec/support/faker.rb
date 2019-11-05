@@ -8,7 +8,7 @@ module Faker
     # @example
     #   Faker::Tinder.account_id #=> "3yfq2phxtb3yfq2phxtb3yfq"
     def self.id
-      Alphanumeric.alpha(number: 24)
+      Alphanumeric.alphanumeric(number: 24)
     end
   end
 end
