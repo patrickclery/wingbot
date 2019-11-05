@@ -9,9 +9,10 @@ class ProcessUpdates
       RawData.where(imported_at: nil, tag: 'updates').each do |rec|
         Tinder::Updates.new(rec.data) do |updates|
           updates.matches.each do |match|
-            Match.from_match(match: match).save!
+            Match.from_match(match).save!
           end
         end
+        rec.mark_as_imported!
       end
       true
     end

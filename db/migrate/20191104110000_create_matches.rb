@@ -21,7 +21,12 @@ class CreateMatches < ActiveRecord::Migration[6.0]
       t.integer :seen, array: true
       t.string :tinder_match_id, null: false
 
-      t.timestamps
+      # Timestamps
+      t.timestamp :active_at
+      t.timestamp :created_at
+      t.timestamp :deleted_at
+      t.timestamp :updated_at
+      t.timestamp :unmatched_at
     end
     add_reference :matches, :person, foreign_key: true
     add_reference :matches, :account, foreign_key: true

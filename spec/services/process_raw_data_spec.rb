@@ -27,7 +27,7 @@ RSpec.describe ProcessRawData, type: :service do
       let!(:raw_updates) { create(:raw_data_updates) }
 
       it { expect { subject }.to change { Account.count }.by(1) }
-      it { expect { subject }.to change { Profile.count }.by(1) }
+      it { expect { subject }.to change { Person.count }.by(4) }
       it { expect { subject }.to change { Match.count }.by(4) }
       it { expect { subject }.to change { Person.count }.by(4) }
       it { expect { subject }.to change { Message.count }.by(4) }

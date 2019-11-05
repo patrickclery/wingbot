@@ -1,6 +1,6 @@
 RSpec.describe Match, type: :model do
 
-  let!(:account) { create(:account, tinder_id: Faker::Alphanumeric.alphanumeric(number: 24)) }
+  let!(:account) { create(:account) }
   let!(:person) { create(:person, tinder_id: '89038190283xjfklsdjklfjs') }
   let!(:raw_updates) { create(:raw_data_updates) }
   let!(:updates) { raw_updates.to_updates }
@@ -34,6 +34,7 @@ RSpec.describe Match, type: :model do
   it { should have_db_column(:tinder_match_id).of_type(:string).with_options(null: false) }
   # Timestamps
   it { should have_db_column(:created_at).of_type(:datetime) }
+  it { should have_db_column(:unmatched_at).of_type(:datetime) }
   it { should have_db_column(:deleted_at).of_type(:datetime) }
   it { should have_db_column(:updated_at).of_type(:datetime) }
 

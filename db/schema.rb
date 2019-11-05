@@ -47,8 +47,11 @@ ActiveRecord::Schema.define(version: 2019_11_04_110000) do
     t.integer "readreceipt", array: true
     t.integer "seen", array: true
     t.string "tinder_match_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "active_at"
+    t.datetime "created_at"
+    t.datetime "deleted_at"
+    t.datetime "updated_at"
+    t.datetime "unmatched_at"
     t.bigint "person_id"
     t.bigint "account_id"
     t.index ["account_id"], name: "index_matches_on_account_id"
