@@ -7,10 +7,9 @@ RSpec.describe Message, type: :model do
   let!(:matches) { updates.matches }
   let!(:match) { create(:match, account: account, person: person, tinder_match_id: '89038190283xjfklsdjklfjs89038190283xjfklsdjklfjs') }
 
-
   it { should belong_to(:match).required }
   it { should have_many(:replies).with_foreign_key(:parent_id) }
-  it { should belong_to(:original).with_foreign_key(:parent_id).optional }
+  it { should belong_to(:message).with_foreign_key(:parent_id).optional }
   it { should have_db_column(:content) }
   it { should have_db_column(:is_outgoing).of_type(:boolean) }
   it { should have_db_column(:tinder_message_id) }

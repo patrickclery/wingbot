@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2019_11_05_060000) do
     t.text "content"
     t.string "tinder_message_id"
     t.boolean "is_outgoing"
+    t.integer "parent_id"
     t.datetime "sent_at"
     t.datetime "created_at"
     t.datetime "deleted_at"
