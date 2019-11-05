@@ -13,11 +13,12 @@ class ProcessUpdates
           end
           updates.messages.each do |message|
             Message.from_message(message).save!
+          end
+          rec.mark_as_imported!
         end
-        rec.mark_as_imported!
+        true
       end
-      true
-    end
 
+    end
   end
 end

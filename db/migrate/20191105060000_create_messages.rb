@@ -2,17 +2,16 @@ class CreateMessages < ActiveRecord::Migration[6.0]
   def change
     create_table :messages, force: :cascade do |t|
       t.text      :content
-      t.timestamp :deleted_at
-      t.integer   :from_id
-      t.integer   :person_id
-      t.integer   :reply_id
-      t.datetime  :sent_at
-      t.string    :tinder_id
-      t.string    :tinder_match_id
       t.string    :tinder_message_id
-      t.timestamp :tinder_timestamp
-      t.timestamps
+      t.boolean   :is_outgoing
+
+      # Timestamps
+      t.datetime  :sent_at
+      t.timestamp :created_at
+      t.timestamp :deleted_at
     end
-    add_reference :messages, :match, null: false
+
+    add_reference :messages, :match, optional: false
+    add_reference :messages, :message, foreign_key: :parent_id, optional: true
   end
 end

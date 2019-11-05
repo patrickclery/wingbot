@@ -61,19 +61,15 @@ ActiveRecord::Schema.define(version: 2019_11_05_060000) do
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
-    t.datetime "deleted_at"
-    t.integer "from_id"
-    t.integer "person_id"
-    t.integer "reply_id"
-    t.datetime "sent_at"
-    t.string "tinder_id"
-    t.string "tinder_match_id"
     t.string "tinder_message_id"
-    t.datetime "tinder_timestamp"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "match_id", null: false
+    t.boolean "is_outgoing"
+    t.datetime "sent_at"
+    t.datetime "created_at"
+    t.datetime "deleted_at"
+    t.bigint "match_id"
+    t.bigint "message_id"
     t.index ["match_id"], name: "index_messages_on_match_id"
+    t.index ["message_id"], name: "index_messages_on_message_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -121,5 +117,6 @@ ActiveRecord::Schema.define(version: 2019_11_05_060000) do
 
   add_foreign_key "matches", "accounts"
   add_foreign_key "matches", "people"
+  add_foreign_key "messages", "messages"
   add_foreign_key "profiles", "accounts"
 end
