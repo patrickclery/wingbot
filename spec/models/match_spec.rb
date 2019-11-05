@@ -1,32 +1,45 @@
 RSpec.describe Match, type: :model do
 
-  include_context 'raw data'
+  let!(:account) { create(:account, tinder_id: Faker::Alphanumeric.alphanumeric(number: 24)) }
+  let!(:person) { create(:person, tinder_id: '89038190283xjfklsdjklfjs') }
+  let!(:raw_updates) { create(:raw_data_updates) }
+  let!(:updates) { raw_updates.to_updates }
+  let!(:matches) { updates.matches }
+  let!(:match) {
+    obj = updates.matches.sample
+    allow(obj).to receive(:_id).and_return('89038190283xjfklsdjklfjs89038190283xjfklsdjklfjs')
+    obj
+  }
 
-  it { should have_attribute(:common_friend_count) }
-  it { should have_attribute(:common_like_count) }
-  it { should have_attribute(:is_boost_match) }
-  it { should have_attribute(:is_closed) }
-  it { should have_attribute(:is_dead) }
-  it { should have_attribute(:is_fast_match) }
-  it { should have_attribute(:is_following) }
-  it { should have_attribute(:is_following_moments) }
-  it { should have_attribute(:is_muted) }
-  it { should have_attribute(:is_pending) }
-  it { should have_attribute(:is_super_like) }
-  it { should have_attribute(:last_active_at) }
-  it { should have_attribute(:matched_at) }
-  it { should have_attribute(:participants) }
-  it { should have_attribute(:person_id) }
-  it { should have_attribute(:readreceipt) }
-  it { should have_attribute(:seen) }
-  it { should have_attribute(:tinder_match_id) }
+  # Schema
+  it { should belong_to(:person) }
+  it { should belong_to(:account) }
+  it { should have_db_column(:common_friend_count).of_type(:integer) }
+  it { should have_db_column(:common_like_count).of_type(:integer) }
+  it { should have_db_column(:is_boost_match).of_type(:boolean) }
+  it { should have_db_column(:is_closed).of_type(:boolean) }
+  it { should have_db_column(:is_dead).of_type(:boolean) }
+  it { should have_db_column(:is_fast_match).of_type(:boolean) }
+  it { should have_db_column(:is_following).of_type(:boolean) }
+  it { should have_db_column(:is_following_moments).of_type(:boolean) }
+  it { should have_db_column(:is_muted).of_type(:boolean) }
+  it { should have_db_column(:is_pending).of_type(:boolean) }
+  it { should have_db_column(:is_super_like).of_type(:boolean) }
+  it { should have_db_column(:last_active_at).of_type(:datetime) }
+  it { should have_db_column(:matched_at).of_type(:datetime) }
+  it { should have_db_column(:participants).of_type(:integer).with_options(array: true) }
+  it { should have_db_column(:person_id).of_type(:integer) }
+  it { should have_db_column(:readreceipt).of_type(:integer).with_options(array: true) }
+  it { should have_db_column(:seen).of_type(:integer).with_options(array: true) }
+  it { should have_db_column(:tinder_match_id).of_type(:string).with_options(null: false) }
 
-  context '#from_match' do
-    subject { described_class.from_match(match: match) }
+  describe '#from_match', type: :method do
+    subject { Match.from_match(match) }
     it { should be_a(Match) }
   end
-  context '#from_updates' do
-    subject { described_class.from_updates(updates: updates) }
+
+  describe '#from_updates' do
+    subject { Match.from_updates(updates) }
     it { should be_an(Array) }
   end
 

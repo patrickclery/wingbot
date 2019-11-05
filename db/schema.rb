@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_30_022042) do
+ActiveRecord::Schema.define(version: 2019_11_04_110000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,8 +30,6 @@ ActiveRecord::Schema.define(version: 2019_10_30_022042) do
 
   create_table "matches", force: :cascade do |t|
     t.bigint "people_id"
-    t.integer "common_friend_count"
-    t.integer "common_like_count"
     t.boolean "is_boost_match"
     t.boolean "is_closed"
     t.boolean "is_dead"
@@ -41,15 +39,19 @@ ActiveRecord::Schema.define(version: 2019_10_30_022042) do
     t.boolean "is_muted"
     t.boolean "is_pending"
     t.boolean "is_super_like"
-    t.string "last_active_at"
-    t.string "matched_at"
-    t.string "participants"
-    t.string "readreceipt"
-    t.string "seen"
-    t.string "tinder_match_id"
+    t.datetime "last_active_at"
+    t.datetime "matched_at"
+    t.integer "common_friend_count"
+    t.integer "common_like_count"
+    t.integer "participants", array: true
+    t.integer "readreceipt", array: true
+    t.integer "seen", array: true
+    t.string "tinder_match_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "person_id"
+    t.bigint "account_id"
+    t.index ["account_id"], name: "index_matches_on_account_id"
     t.index ["people_id"], name: "index_matches_on_people_id"
     t.index ["person_id"], name: "index_matches_on_person_id"
   end
@@ -113,6 +115,7 @@ ActiveRecord::Schema.define(version: 2019_10_30_022042) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "matches", "accounts"
   add_foreign_key "matches", "people"
   add_foreign_key "profiles", "accounts"
 end
