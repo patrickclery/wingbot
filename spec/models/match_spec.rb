@@ -12,8 +12,8 @@ RSpec.describe Match, type: :model do
   end
 
   # Schema
-  it { should belong_to(:person) }
-  it { should belong_to(:account) }
+  it { should belong_to(:person).required }
+  it { should belong_to(:account).required }
   it { should have_db_column(:common_friend_count).of_type(:integer) }
   it { should have_db_column(:common_like_count).of_type(:integer) }
   it { should have_db_column(:is_boost_match).of_type(:boolean) }
@@ -31,7 +31,7 @@ RSpec.describe Match, type: :model do
   it { should have_db_column(:person_id).of_type(:integer) }
   it { should have_db_column(:readreceipt).of_type(:integer).with_options(array: true) }
   it { should have_db_column(:seen).of_type(:integer).with_options(array: true) }
-  it { should have_db_column(:tinder_match_id).of_type(:string).with_options(null: false) }
+  it { should have_db_column(:tinder_match_id).of_type(:string).with_options(optional: false) }
   # Timestamps
   it { should have_db_column(:created_at).of_type(:datetime) }
   it { should have_db_column(:unmatched_at).of_type(:datetime) }
@@ -39,15 +39,39 @@ RSpec.describe Match, type: :model do
   it { should have_db_column(:updated_at).of_type(:datetime) }
 
   describe '#from_match', type: :method do
-    subject { Match.from_match(match) }
-    it { should be_a(Match) }
-  end
+    context 'a valid match' do
 
-  describe '#from_updates' do
-    subject { Match.from_updates(updates) }
-    pending do
-      it { should be_an(Array) }
+      subject(:valid_match) do
+        described_class.from_match(match).then do |obj|
+          obj.account = account
+          obj.person  = person
+          obj
+        end
+      end
+
+      it { should be_a(Match) }
+      it { expect(subject).to be_valid }
     end
   end
 
+  describe '#from_updates' do
+    context 'a valid match' do
+
+      subject(:valid_match) do
+        described_class.from_updates(updates).then do |collection|
+          collection.map do |obj|
+            obj.account = account
+            obj.person  = person
+            obj
+          end
+        end
+      end
+
+      pending do
+        it { should be_an(Array) }
+        it { expect(subject).to be_valid }
+      end
+    end
+
+  end
 end
