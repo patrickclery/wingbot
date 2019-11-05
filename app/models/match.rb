@@ -6,7 +6,7 @@ class Match < ApplicationRecord
 
   # @param Tinder::Match
   def self.from_match(match)
-    Person.find_by(tinder_id: match._id[0,24]).then do |person|
+    Person.where(tinder_id: match._id[24, 48]).first.then do |person|
       find_or_initialize_by(tinder_match_id: match.id).then do |obj|
         obj.assign_attributes(is_following:         match.following,
                               is_following_moments: match.following_moments,

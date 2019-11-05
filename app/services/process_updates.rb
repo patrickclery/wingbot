@@ -5,19 +5,23 @@ class ProcessUpdates
   # @return Boolean true
   class << self
 
-    def call
+    def call(account)
       RawData.where(imported_at: nil, tag: 'updates').each do |rec|
-        Tinder::Updates.new(rec.data) do |updates|
+        Tinder::Updates.new(rec.data).then do |updates|
           updates.matches.each do |match|
-            Match.from_match(match).save!
+            obj = Match.from_match(match)
+            obj.account = account
+            obj.save!
           end
           updates.messages.each do |message|
-            Message.from_message(message).save!
+            obj = Message.from_message(message).save!
+            obj.account = account
+            obj.save!
           end
           rec.mark_as_imported!
         end
-        true
       end
+      true
 
     end
   end
