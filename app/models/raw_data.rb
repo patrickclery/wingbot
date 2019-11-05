@@ -16,4 +16,10 @@ class RawData < ApplicationRecord
   def to_profile
     Tinder::ActiveProfile.new(data)
   end
+
+  def mark_as_imported!
+    self.imported_at = Time.now
+    save
+    true
+  end
 end
