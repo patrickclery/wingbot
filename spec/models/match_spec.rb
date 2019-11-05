@@ -5,11 +5,11 @@ RSpec.describe Match, type: :model do
   let!(:raw_updates) { create(:raw_data_updates) }
   let!(:updates) { raw_updates.to_updates }
   let!(:matches) { updates.matches }
-  let!(:match) {
+  let!(:match) do
     obj = updates.matches.sample
     allow(obj).to receive(:_id).and_return('89038190283xjfklsdjklfjs89038190283xjfklsdjklfjs')
     obj
-  }
+  end
 
   # Schema
   it { should belong_to(:person) }
@@ -32,6 +32,10 @@ RSpec.describe Match, type: :model do
   it { should have_db_column(:readreceipt).of_type(:integer).with_options(array: true) }
   it { should have_db_column(:seen).of_type(:integer).with_options(array: true) }
   it { should have_db_column(:tinder_match_id).of_type(:string).with_options(null: false) }
+  # Timestamps
+  it { should have_db_column(:created_at).of_type(:datetime) }
+  it { should have_db_column(:deleted_at).of_type(:datetime) }
+  it { should have_db_column(:updated_at).of_type(:datetime) }
 
   describe '#from_match', type: :method do
     subject { Match.from_match(match) }

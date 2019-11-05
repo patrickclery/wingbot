@@ -12,8 +12,6 @@ class SaveUpdates
       client.api_token = api_token
       RawData.create(data: client.get_updates, tag: 'updates')
       true
-    rescue StandardError => e
-      fail "Failed to save updates: #{e.message}"
     end
 
   end

@@ -8,6 +8,7 @@ class CreatePeople < ActiveRecord::Migration[6.0]
       t.string :instagram_username
       t.string :name
       t.text :bio
+      t.string :city
 
       # Collections
       t.text :common_friends
@@ -24,7 +25,6 @@ class CreatePeople < ActiveRecord::Migration[6.0]
       t.timestamp :active_at
       t.timestamp :created_at
       t.timestamp :deleted_at
-      t.timestamp :muted_at
       t.timestamp :updated_at
 
       # Flags

@@ -12,8 +12,6 @@ class SaveRecommendations
       client.api_token = api_token
       RawData.create(data: client.get_recommendations.to_json, tag: 'recommendations')
       true
-    rescue StandardError => e
-      fail "Failed to save recommendations: #{e.message}"
     end
 
   end

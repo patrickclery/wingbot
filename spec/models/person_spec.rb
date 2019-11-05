@@ -1,24 +1,32 @@
 RSpec.describe Person, type: :model do
 
-  include_context 'raw data'
+  it { should have_db_column(:bio).of_type(:text) }
+  it { should have_db_column(:birthdate).of_type(:date) }
+  it { should have_db_column(:city).of_type(:string) }
+  it { should have_db_column(:gender).of_type(:string) }
+  it { should have_db_column(:hide_age).of_type(:boolean) }
+  it { should have_db_column(:hide_distance).of_type(:boolean) }
+  it { should have_db_column(:instagram_id).of_type(:string) }
+  it { should have_db_column(:instagram_username).of_type(:string) }
+  it { should have_db_column(:is_traveling).of_type(:boolean) }
+  it { should have_db_column(:name).of_type(:string) }
+  it { should have_db_column(:photos).of_type(:text) }
+  it { should have_db_column(:schools).of_type(:text) }
+  it { should have_db_column(:tinder_id).of_type(:string) }
+  # Timestamps
+  it { should have_db_column(:active_at).of_type(:datetime) }
+  it { should have_db_column(:created_at).of_type(:datetime) }
+  it { should have_db_column(:updated_at).of_type(:datetime) }
+  it { should have_db_column(:deleted_at).of_type(:datetime) }
+  it { should have_db_column(:updated_at).of_type(:datetime) }
 
-  it { should have_attribute(:birthdate) }
-  it { should have_attribute(:tinder_id) }
-  it { should have_attribute(:bio) }
-  it { should have_attribute(:name) }
-  it { should have_attribute(:photos) }
-  it { should have_attribute(:gender) }
-  it { should have_attribute(:schools) }
-  it { should have_attribute(:name) }
-  it { should have_attribute(:is_traveling) }
-  it { should have_attribute(:hide_age) }
-  it { should have_attribute(:hide_distance) }
+  context '#from_recommendation' do
+    let!(:raw_recommendations) { create(:raw_data_recommendations) }
+    let!(:recommendation) { Tinder::Recommendation.new(raw_recommendations.data.sample) }
 
-  context '#from_user' do
-    subject do
-      described_class.from_user(user: recommendations.first.user)
-    end
+    subject { described_class.from_recommendation(recommendation) }
     it { should be_a(Person) }
+    it { should be_valid }
   end
 
 end

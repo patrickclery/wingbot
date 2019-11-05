@@ -1,13 +1,14 @@
-RSpec.describe CreateAccountFromProfile, type: :service do
+RSpec.describe CreatePersonFromRecommendation, type: :service do
   subject { described_class }
 
-  let!(:raw_profile) { create(:raw_data_profile) }
-  let!(:profile) { Tinder::ActiveProfile.new(raw_profile.data) }
+  let!(:account) { create(:account) }
+  let!(:raw_recommendations) { create(:raw_data_recommendations) }
+  let!(:recommendation) { Tinder::Recommendation.new(raw_recommendations.data.sample) }
 
   it { should respond_to(:call).with(1).argument }
   describe '#call' do
-    subject { described_class.call(profile) }
-    it { expect(subject).to be_a(Account) }
-    it { expect { subject }.to change { Account.count }.by(1) }
+    subject { described_class.call(recommendation) }
+    it { expect(subject).to be_a(Person) }
+    it { expect { subject }.to change { Person.count }.by(1) }
   end
 end

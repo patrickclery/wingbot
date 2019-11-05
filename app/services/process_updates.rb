@@ -5,13 +5,15 @@ class ProcessUpdates
   # @return Boolean true
   class << self
 
-    def call # Fetching updates...
-      RawData.where(imported_at: nil, tag: 'updates').all do |rec|
-        Match.from_updates(updates: rec.data).save!
+    def call
+      RawData.where(imported_at: nil, tag: 'updates').each do |rec|
+        Tinder::Updates.new(rec.data) do |updates|
+          updates.matches.each do |match|
+            Match.from_match(match: match).save!
+          end
+        end
       end
       true
-    rescue StandardError => e
-      fail "Failed to save updates: #{e.message}"
     end
 
   end
