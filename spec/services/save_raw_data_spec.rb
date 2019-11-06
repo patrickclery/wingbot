@@ -25,7 +25,6 @@ RSpec.describe SaveRawData, type: :service do
       subject
     end
 
-
     it { expect { subject }.to change { RawData.where(imported_at: nil).count }.to(6) }
   end
 end
