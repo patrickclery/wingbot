@@ -21,16 +21,14 @@ RSpec.describe ProcessRawData, type: :service do
 
     context 'when raw data exists and is awaiting import' do
 
-      let!(:account) { create(:account) }
       let!(:raw_recommendations) { create(:raw_data_recommendations) }
       let!(:raw_profile) { create(:raw_data_profile) }
       let!(:raw_updates) { create(:raw_data_updates) }
 
       it { expect { subject }.to change { Account.count }.by(1) }
-      it { expect { subject }.to change { Person.count }.by(4) }
-      it { expect { subject }.to change { Match.count }.by(4) }
-      it { expect { subject }.to change { Person.count }.by(4) }
-      it { expect { subject }.to change { Message.count }.by(4) }
+      it { expect { subject }.to change { Person.count }.by(5) }
+      it { expect { subject }.to change { Match.count }.by(1) }
+      it { expect { subject }.to change { Message.count }.by(18) }
       it { expect { subject }.to change { RawData.where(imported_at: nil).count }.to(0) }
     end
   end
