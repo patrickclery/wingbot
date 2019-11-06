@@ -25,6 +25,10 @@ class Match < ApplicationRecord
     end
   end
 
+  def extract_tinder_id_from_match(match:,account:)
+
+  end
+
   # @param Tinder::Updates
   def self.from_updates(updates)
     updates.matches.map { |m| from_match(m) }
