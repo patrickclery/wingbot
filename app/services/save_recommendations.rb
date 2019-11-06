@@ -10,7 +10,7 @@ class SaveRecommendations
     def call(api_token:) # Fetching recommendations...
       client           = Tinder::Client.new
       client.api_token = api_token
-      RawData.create(data: client.get_recommendations.to_json, tag: 'recommendations')
+      RawData.create(data: client.get_recommendations, tag: 'recommendations')
       true
     end
 

@@ -9,6 +9,6 @@ RSpec.describe SaveProfile, type: :service do
   describe '#call', type: :method do
     subject { described_class.call(api_token: api_token) }
     it { expect(subject).to be true }
-    it { expect { subject }.to change { RawData.count }.by(1) }
+    it { expect { subject }.to change { RawData.where(tag: 'profile').count }.by(1) }
   end
 end
