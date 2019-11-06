@@ -1,16 +1,16 @@
 RSpec.describe SaveRawData, type: :service do
-  subject { described_class }
-  it { should respond_to(:call) }
   include_context 'stubs'
 
   describe '#call' do
-    subject { described_class.call(api_token: api_token) }
-    it { expect(subject).to be true }
-
+    subject { SaveRawData.call(api_token: api_token) }
     let(:api_token) { "12a3bc45-a123-123a-1a23-1234abc4de5f" }
-    let!(:raw_recommendations) { create(:raw_data_recommendations) }
     let!(:raw_profile) { create(:raw_data_profile) }
+    let!(:raw_recommendations) { create(:raw_data_recommendations) }
     let!(:raw_updates) { create(:raw_data_updates) }
+
+    it { expect(SaveRawData).to respond_to(:call).with_keywords(:api_token) }
+    it { expect { subject }.to change { RawData.where(imported_at: nil).count }.by(3) }
+    it { should be true }
 
     # https://relishapp.com/rspec/rspec-mocks/docs/setting-constraints/message-order
     it 'imports data in logical order' do
@@ -24,7 +24,5 @@ RSpec.describe SaveRawData, type: :service do
 
       subject
     end
-
-    it { expect { subject }.to change { RawData.where(imported_at: nil).count }.to(6) }
   end
 end
