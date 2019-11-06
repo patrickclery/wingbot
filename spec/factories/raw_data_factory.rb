@@ -10,10 +10,7 @@ FactoryBot.define do
 
   factory :raw_data_updates, class: RawData do
     imported_at { nil }
-    data do
-      gem_dir    = Gem::Specification.find_by_name("tinder_client").gem_dir
-      json_parse = JSON.parse(File.read(File.join("#{gem_dir}/spec/tinder/fixtures/updates.json")))
-    end
+    data { JSON.parse(File.read(File.join(Rails.root, "/spec/fixtures/updates_with_one_match.json"))) }
     tag { 'updates' }
   end
 
