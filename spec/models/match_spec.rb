@@ -1,13 +1,13 @@
 RSpec.describe Match, type: :model do
 
-  let!(:account) { create(:account) }
-  let!(:person) { create(:person, tinder_id: '89038190283xjfklsdjklfjs') }
+  let!(:account) { create(:account, tinder_id: 'AAAAAAAAAAAAAAAAAAAAAAAA') }
+  let!(:person) { create(:person, tinder_id: 'BBBBBBBBBBBBBBBBBBBBBBBB') }
   let!(:raw_updates) { create(:raw_data_updates) }
   let!(:updates) { raw_updates.to_updates }
   let!(:matches) { updates.matches }
   let!(:match) do
     obj = updates.matches.sample
-    allow(obj).to receive(:_id).and_return('89038190283xjfklsdjklfjs89038190283xjfklsdjklfjs')
+    allow(obj).to receive(:_id).and_return('BBBBBBBBBBBBBBBBBBBBBBBBAAAAAAAAAAAAAAAAAAAAAAAA')
     obj
   end
 
@@ -39,39 +39,8 @@ RSpec.describe Match, type: :model do
   it { should have_db_column(:updated_at).of_type(:datetime) }
 
   describe '#from_match', type: :method do
-    context 'a valid match' do
-
-      subject(:valid_match) do
-        described_class.from_match(match).then do |obj|
-          obj.account = account
-          obj.person  = person
-          obj
-        end
-      end
-
-      it { should be_a(Match) }
-      it { expect(subject).to be_valid }
-    end
+    subject { described_class.from_match(match) }
+    it { should be_a(Match) }
   end
 
-  describe '#from_updates' do
-    context 'a valid match' do
-
-      subject(:valid_match) do
-        described_class.from_updates(updates).then do |collection|
-          collection.map do |obj|
-            obj.account = account
-            obj.person  = person
-            obj
-          end
-        end
-      end
-
-      pending do
-        it { should be_an(Array) }
-        it { expect(subject).to be_valid }
-      end
-    end
-
-  end
 end
