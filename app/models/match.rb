@@ -2,8 +2,6 @@ class Match < ApplicationRecord
   belongs_to :person, required: true, autosave: true
   has_one :account, through:  :person
 
-  serialize :photos
-
   class << self
     # @param Tinder::Match
     def from_match(match_struct)
