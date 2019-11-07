@@ -8,17 +8,14 @@ class Match < ApplicationRecord
 
       tinder_match_id = match_struct._id
       find_or_initialize_by(tinder_match_id: tinder_match_id).then do |match|
-
         # Find the person
         Person.from_person(match_struct.person).then do |person|
-
-          # Find the account, if it's nil
+          # Find the account, if it's new
           person.account ||= begin
             tinder_account_id = tinder_match_id[24, 48]
             Account.find_or_initialize_by(tinder_id: tinder_account_id)
           end
 
-          # Update/create the match
           match.assign_attributes(is_following:         match_struct.following,
                                   is_following_moments: match_struct.following_moments,
                                   is_boost_match:       match_struct.is_boost_match,

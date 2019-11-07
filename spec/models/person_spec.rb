@@ -1,6 +1,7 @@
 RSpec.describe Person, type: :model do
 
   it { should belong_to(:account).autosave(true).required }
+  it { should have_many(:matches) }
 
   it { should have_db_column(:bio).of_type(:text) }
   it { should have_db_column(:birthdate).of_type(:date) }
