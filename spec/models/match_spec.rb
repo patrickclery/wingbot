@@ -12,8 +12,8 @@ RSpec.describe Match, type: :model do
   end
 
   # Schema
-  it { should belong_to(:person).required }
-  it { should belong_to(:account).required }
+  it { should belong_to(:person).required.autosave(true) }
+  it { should have_one(:account).through(:person) }
   it { should have_db_column(:common_friend_count).of_type(:integer) }
   it { should have_db_column(:common_like_count).of_type(:integer) }
   it { should have_db_column(:is_boost_match).of_type(:boolean) }

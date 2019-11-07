@@ -1,6 +1,6 @@
 class Match < ApplicationRecord
-  belongs_to :person, autosave: true
-  has_one :account, through: :person, autosave: true
+  belongs_to :person, required: true, autosave: true
+  has_one :account, through:  :person
 
   serialize :photos
 

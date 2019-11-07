@@ -29,15 +29,10 @@ end
 ###############################################################################
 RSpec.describe SaveAccountData, type: :service do
   include_examples 'stubs'
-  let(:api_token) { "12a3bc45-a123-123a-1a23-1234abc4de5f" }
+  subject { SaveAccountData.call(api_token: api_token) }
 
   it { expect(SaveAccountData).to respond_to(:call).with_keywords(:api_token) }
   it 'imports data in logical order' do
-    # Stubs real work - we only care about order
-    allow(SaveRawData).to receive(:call).with(api_token: api_token, tag: :profile).and_return(true)
-    allow(SaveRawData).to receive(:call).with(api_token: api_token, tag: :recommendations).and_return(true)
-    allow(SaveRawData).to receive(:call).with(api_token: api_token, tag: :updates).and_return(true)
-
     expect(SaveRawData).to receive(:call).ordered
     expect(SaveRawData).to receive(:call).ordered
     expect(SaveRawData).to receive(:call).ordered
