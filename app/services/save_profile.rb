@@ -6,7 +6,11 @@ class SaveProfile
   def self.call(api_token:) # Fetching recommendations...
     client           = Tinder::Client.new
     client.api_token = api_token
-    RawData.create(data: client.profile, tag: 'profile')
+
+    profile = client.profile
+    RawData.create account: Account.from_profile(profile),
+                   data: client.profile,
+                   tag: 'profile'
     true
   end
 

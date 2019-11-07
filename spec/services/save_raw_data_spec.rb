@@ -3,9 +3,6 @@ RSpec.shared_context 'save data' do
   include_context 'stubs'
 
   let(:api_token) { "eyJhbGciOiJIUzI1NiJ9.MTc3ODk5MDk4MDM.5q4R0H08rE0Dd9KgxMPp6jcTfIBLCXgEuVZfC9znJTE" }
-  let!(:raw_profile) { create(:raw_data_profile) }
-  let!(:raw_recommendations) { create(:raw_data_recommendations) }
-  let!(:raw_updates) { create(:raw_data_updates) }
 
   subject { described_class.call(api_token: api_token) }
   it { should be true }
@@ -32,6 +29,11 @@ RSpec.describe SaveRawData, type: :service do
 end
 
 ###############################################################################
-RSpec.describe(SaveProfile) { include_examples 'save data' }
+RSpec.describe(SaveProfile) do
+  include_context 'stubs'
+  include_examples 'save data'
+
+  it { expect { subject }.to change { Account.count }.by(1) }
+end
 RSpec.describe(SaveRecommendations) { include_examples 'save data' }
 RSpec.describe(SaveUpdates) { include_examples 'save data' }

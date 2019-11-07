@@ -35,7 +35,7 @@ module RSpec
       subject
     end
 
-    it { expect { subject }.to change { Person.count }.by(5) }
+    it { expect { subject }.to change { Person.count }.by(4) }
     it { expect { subject }.to change { Match.count }.by(1) }
     it { expect { subject }.to change { Message.count }.by(18) }
   end
