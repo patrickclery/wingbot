@@ -8,6 +8,7 @@ RSpec.shared_context 'save data' do
   it { should be true }
   it { expect(described_class).to respond_to(:call).with_keywords(:api_token) }
   it { expect { subject }.to change { RawData.where(imported_at: nil) } }
+  it { expect { subject }.to change { Account.count }.by(1) }
 end
 
 ###############################################################################
@@ -29,11 +30,6 @@ RSpec.describe SaveRawData, type: :service do
 end
 
 ###############################################################################
-RSpec.describe(SaveProfile) do
-  include_context 'stubs'
-  include_examples 'save data'
-
-  it { expect { subject }.to change { Account.count }.by(1) }
-end
+RSpec.describe(SaveProfile) { include_examples 'save data' }
 RSpec.describe(SaveRecommendations) { include_examples 'save data' }
 RSpec.describe(SaveUpdates) { include_examples 'save data' }

@@ -9,7 +9,7 @@ class SaveProfile
 
     profile = client.profile
     RawData.create account: Account.from_profile(profile),
-                   data: client.profile,
+                   data: profile,
                    tag: 'profile'
     true
   end
