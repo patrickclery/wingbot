@@ -1,7 +1,6 @@
 RSpec.describe Person, type: :model do
 
-  # Upon import, it should assign the account_id to which it originally came from
-  it { should belong_to(:account_id).required }
+  it { should belong_to(:account).autosave(true).required }
 
   it { should have_db_column(:bio).of_type(:text) }
   it { should have_db_column(:birthdate).of_type(:date) }
@@ -23,13 +22,31 @@ RSpec.describe Person, type: :model do
   it { should have_db_column(:deleted_at).of_type(:datetime) }
   it { should have_db_column(:updated_at).of_type(:datetime) }
 
-  context '#from_recommendation' do
-    let!(:raw_recommendations) { create(:raw_data_recommendations) }
-    let!(:recommendation) { Tinder::Recommendation.new(raw_recommendations.data.sample) }
+  describe '#from_recommendation' do
+    subject do
+      Person.from_recommendation(recommendation).then do |person|
+        person.account = account
+        person
+      end
+    end
 
-    subject { described_class.from_recommendation(recommendation) }
+    let!(:account) { create(:account) }
+    let!(:raw_recommendations) { create(:raw_data_recommendations) }
+    let!(:recommendation) { raw_recommendations.to_recommendations.sample }
+
     it { should be_a(Person) }
     it { should be_valid }
+  end
+
+  describe '#from_person' do
+    let!(:raw_updates) { create(:raw_data_updates) }
+    let!(:person_struct) { raw_updates.to_updates.matches.sample.person }
+    subject do
+      Person.from_person(person_struct).then do |person|
+        person.account = account
+        person
+      end
+    end
   end
 
 end

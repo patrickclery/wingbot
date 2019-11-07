@@ -6,6 +6,6 @@ class CreateProfiles < ActiveRecord::Migration[6.0]
       t.string :name
       t.timestamps
     end
-    add_reference :profiles, :account, foreign_key: true, null: true
+    add_reference :profiles, :account, foreign_key: true, optional: false
   end
 end

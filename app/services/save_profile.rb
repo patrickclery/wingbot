@@ -4,14 +4,7 @@ class SaveProfile
   # @param String The API token provided by Tinder when logged in
   # @return Boolean true
   def self.call(api_token:) # Fetching recommendations...
-    client           = Tinder::Client.new
-    client.api_token = api_token
-
-    profile = client.profile
-    RawData.create account: Account.from_profile(profile),
-                   data: profile,
-                   tag: 'profile'
-    true
+    SaveRawData.call(tag: :profile, api_token: api_token)
   end
 
 end

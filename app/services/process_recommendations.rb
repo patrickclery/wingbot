@@ -8,8 +8,7 @@ class ProcessRecommendations
     RawData.where(imported_at: nil, tag: 'recommendations').each do |rec|
       rec.to_recommendations.each do |recommendation|
         Person.find_or_initialize_by(tinder_id: recommendation.user._id).then do |person|
-          person.assign_attributes account:       rec.account,
-                                   bio:           recommendation.user.bio,
+          person.assign_attributes bio:           recommendation.user.bio,
                                    birthdate:     recommendation.user.birth_date,
                                    city:          recommendation.user.city&.name,
                                    gender:        recommendation.user.gender,

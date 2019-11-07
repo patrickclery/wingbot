@@ -1,7 +1,7 @@
 RSpec.shared_context 'raw data' do
 
-  let!(:basic_account) { create(:account, tinder_id: Faker::Alphanumeric.alphanumeric(number: 24)) }
-  let!(:person) { create(:person, tinder_id: basic_account.tinder_id) }
+  let!(:basic_account) { create(:account) }
+  let!(:person) { create(:person, account: basic_account, tinder_id: basic_account.tinder_id) }
   let(:raw_updates) { create(:raw_data_updates) }
   let(:raw_data_recommendations) { create(:raw_data_recommendations) }
   let(:raw_profiles) { create_list(:raw_data_profile, 3) }

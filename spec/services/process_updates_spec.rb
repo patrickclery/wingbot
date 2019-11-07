@@ -21,7 +21,7 @@ RSpec.describe ProcessUpdates, type: :service do
 
     context 'when account exists' do
       let!(:account) { create(:account, tinder_id: 'AAAAAAAAAAAAAAAAAAAAAAAA') }
-      let!(:person) { create(:person, tinder_id: 'BBBBBBBBBBBBBBBBBBBBBBBB') }
+      let!(:person) { create(:person, account: account, tinder_id: 'BBBBBBBBBBBBBBBBBBBBBBBB') }
 
       it { expect { subject }.not_to change { Account.count } }
       it { expect { subject }.not_to change { Person.count } }

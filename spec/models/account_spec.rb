@@ -1,10 +1,14 @@
 RSpec.describe Account, type: :model do
 
-  let(:raw_recommendations) { create(:raw_data_recommendations) }
-  let(:raw_updates) { create(:raw_data_updates) }
-  let(:raw_profile) { create(:raw_data_profile) }
+  let!(:raw_recommendations) { create(:raw_data_recommendations) }
+  let!(:raw_updates) { create(:raw_data_updates) }
+  let!(:raw_profile) { create(:raw_data_profile) }
 
-  it { should have_many(:profiles) }
+  it { should have_many(:profiles).autosave(true) }
+  it { should have_many(:people).autosave(true) }
+  it { should have_many(:matches).autosave(true) }
+  it { should have_many(:profiles).autosave(true) }
+  it { should have_many(:raw_data).autosave(true) }
   it { should have_db_column(:tinder_id).of_type(:string) }
   it { should have_db_column(:email).of_type(:string) }
   it { should have_db_column(:name).of_type(:string) }

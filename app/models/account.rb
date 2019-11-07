@@ -1,7 +1,8 @@
 class Account < ApplicationRecord
-  has_many :profiles
-  has_many :matches
-  has_many :raw_data
+  has_many :profiles, autosave: true
+  has_many :people, autosave: true
+  has_many :matches, autosave: true
+  has_many :raw_data, autosave: true, class_name: 'RawData'
 
   # @return Account
   # @param Hash JSON response of from a profile request

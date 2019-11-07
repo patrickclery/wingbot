@@ -1,7 +1,7 @@
 RSpec.describe Message, type: :model do
 
   let!(:account) { create(:account, tinder_id: 'AAAAAAAAAAAAAAAAAAAAAAAA') }
-  let!(:person) { create(:person, tinder_id: 'BBBBBBBBBBBBBBBBBBBBBBBB') }
+  let!(:person) { create(:person, account: account, tinder_id: 'BBBBBBBBBBBBBBBBBBBBBBBB') }
   let!(:raw_updates) { create(:raw_data_updates) }
   let!(:updates) { raw_updates.to_updates }
   let!(:matches) { updates.matches }

@@ -12,7 +12,7 @@ RSpec.describe RawData, type: :model do
   # It makes things a LOT easier to save the account_id that was used
   # Instead of using magic to retrieve it later, just in case the order
   # was missed.
-  it { should belong_to(:account).required }
+  it { should belong_to(:account).required.autosave(true) }
   it { should have_db_column(:data).of_type(:json) }
   it { should have_db_column(:imported_at).of_type(:datetime) }
   it { should have_db_column(:tag).of_type(:string) }

@@ -1,5 +1,5 @@
 class RawData < ApplicationRecord
-  belongs_to :account
+  belongs_to :account, autosave: true
 
   # @return Tinder::Updates
   def to_updates

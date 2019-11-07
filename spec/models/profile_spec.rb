@@ -5,7 +5,7 @@ RSpec.describe Profile, type: :model do
   let(:profile) { raw_profile.to_profile }
 
   describe 'schema' do
-    it { should belong_to(:account) }
+    it { should belong_to(:account).required.autosave(true) }
     it { should have_db_column(:name).of_type(:string).with_options(presence: true) }
     it { should have_db_column(:account_id).of_type(:integer).with_options(presence: true) }
     it { should have_db_column(:is_active).of_type(:boolean).with_options(presence: true) }
