@@ -6,13 +6,17 @@ class Person < ApplicationRecord
 
   # @param Tinder::User pass a User struct from a recommendation
   def self.from_recommendation(recommendation)
-    new bio:       recommendation.user.bio,
-        birthdate: recommendation.user.birth_date,
-        gender:    recommendation.user.gender,
-        name:      recommendation.user.name,
-        photos:    recommendation.user.photos,
-        schools:   recommendation.user.schools,
-        tinder_id: recommendation.user._id
+    new bio:           recommendation.user.bio,
+        birthdate:     recommendation.user.birth_date,
+        city:          recommendation.user.city&.name,
+        gender:        recommendation.user.gender,
+        hide_age:      recommendation.user.hide_age,
+        hide_distance: recommendation.user.hide_distance,
+        is_traveling:  recommendation.user.is_traveling,
+        jobs:          recommendation.user.jobs,
+        name:          recommendation.user.name,
+        photos:        recommendation.user.photos,
+        schools:       recommendation.user.schools
   end
 
   # @param Tinder::Person

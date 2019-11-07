@@ -7,22 +7,9 @@ class ProcessRecommendations
   def self.call
     RawData.where(imported_at: nil, tag: 'recommendations').each do |rec|
       rec.to_recommendations.each do |recommendation|
-        Person.find_or_initialize_by(tinder_id: recommendation.user._id).then do |person|
-          person.assign_attributes bio:           recommendation.user.bio,
-                                   birthdate:     recommendation.user.birth_date,
-                                   city:          recommendation.user.city&.name,
-                                   gender:        recommendation.user.gender,
-                                   hide_age:      recommendation.user.hide_age,
-                                   hide_distance: recommendation.user.hide_distance,
-                                   is_traveling:  recommendation.user.is_traveling,
-                                   jobs:          recommendation.user.jobs,
-                                   name:          recommendation.user.name,
-                                   photos:        recommendation.user.photos,
-                                   schools:       recommendation.user.schools
-          # Only assign an account if the person didn't already have one
+        Person.from_recommendation(recommendation).then do |person|
           person.account ||= rec.account
-          person.save
-          person
+          person.save!
         end
       end
       rec.mark_as_imported!
