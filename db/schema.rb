@@ -96,6 +96,8 @@ ActiveRecord::Schema.define(version: 2019_11_05_060000) do
     t.boolean "is_traveling"
     t.boolean "hide_age"
     t.boolean "hide_distance"
+    t.bigint "account_id"
+    t.index ["account_id"], name: "index_people_on_account_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -114,10 +116,14 @@ ActiveRecord::Schema.define(version: 2019_11_05_060000) do
     t.string "tag"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "account_id"
+    t.index ["account_id"], name: "index_raw_data_on_account_id"
   end
 
   add_foreign_key "matches", "accounts"
   add_foreign_key "matches", "people"
   add_foreign_key "messages", "messages"
+  add_foreign_key "people", "accounts"
   add_foreign_key "profiles", "accounts"
+  add_foreign_key "raw_data", "accounts"
 end

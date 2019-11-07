@@ -1,9 +1,18 @@
 RSpec.describe RawData, type: :model do
 
+  subject { RawData.new(account: account) }
+
+  let!(:account) { create(:account, tinder_id: 'AAAAAAAAAAAAAAAAAAAAAAAA') }
+  let!(:person) { create(:person, account: account, tinder_id: 'BBBBBBBBBBBBBBBBBBBBBBBB') }
+
   let!(:raw_recommendations) { create(:raw_data_recommendations) }
   let!(:raw_updates) { create(:raw_data_updates) }
   let!(:raw_profile) { create(:raw_data_profile) }
 
+  # It makes things a LOT easier to save the account_id that was used
+  # Instead of using magic to retrieve it later, just in case the order
+  # was missed.
+  it { should belong_to(:account).required }
   it { should have_db_column(:data).of_type(:json) }
   it { should have_db_column(:imported_at).of_type(:datetime) }
   it { should have_db_column(:tag).of_type(:string) }

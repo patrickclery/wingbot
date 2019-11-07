@@ -7,7 +7,7 @@ class ProcessRawData
   class << self
 
     def call
-      ProcessProfiles.call
+      ProcessProfile.call
       ProcessRecommendations.call
       ProcessUpdates.call
       true

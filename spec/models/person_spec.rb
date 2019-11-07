@@ -1,5 +1,8 @@
 RSpec.describe Person, type: :model do
 
+  # Upon import, it should assign the account_id to which it originally came from
+  it { should belong_to(:account_id).required }
+
   it { should have_db_column(:bio).of_type(:text) }
   it { should have_db_column(:birthdate).of_type(:date) }
   it { should have_db_column(:city).of_type(:string) }

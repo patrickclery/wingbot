@@ -1,6 +1,5 @@
-require 'tinder/client' # provides `Tinder::Updates`
-
 class RawData < ApplicationRecord
+  belongs_to :account
 
   # @return Tinder::Updates
   def to_updates

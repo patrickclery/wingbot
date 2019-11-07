@@ -6,17 +6,20 @@ FactoryBot.define do
       json_parse = JSON.parse(File.read(File.join("#{gem_dir}/spec/tinder/fixtures/recommendations_1.json")))
     }
     tag { 'recommendations' }
+    account
   end
 
   factory :raw_data_updates, class: RawData do
     imported_at { nil }
     data { JSON.parse(File.read(File.join(Rails.root, "/spec/fixtures/updates_with_one_match.json"))) }
     tag { 'updates' }
+    account
   end
 
   factory :raw_data_profile, class: RawData do
     imported_at { nil }
     data { JSON.parse(File.read(File.join(Rails.root, "/spec/fixtures/profile.json"))) }
     tag { 'profile' }
+    account
   end
 end

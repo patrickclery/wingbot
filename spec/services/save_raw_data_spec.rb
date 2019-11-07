@@ -17,8 +17,8 @@ end
 RSpec.describe SaveRawData, type: :service do
   include_examples 'save data'
 
-  # https://relishapp.com/rspec/rspec-mocks/docs/setting-constraints/message-order
   it 'imports data in logical order' do
+    # Stubs real work - we only care about order
     allow(SaveProfile).to receive(:call).with(api_token: api_token).and_return(true)
     allow(SaveRecommendations).to receive(:call).with(api_token: api_token).and_return(true)
     allow(SaveUpdates).to receive(:call).with(api_token: api_token).and_return(true)

@@ -1,4 +1,4 @@
-RSpec.describe ProcessProfiles, type: :service do
+RSpec.describe ProcessProfile, type: :service do
   describe '#call' do
     subject { described_class.call }
 

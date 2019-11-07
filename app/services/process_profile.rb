@@ -1,4 +1,4 @@
-class ProcessProfiles
+class ProcessProfile
 
   # Fetches the latest profile and handles errors
   # @raise Exception if the request fails

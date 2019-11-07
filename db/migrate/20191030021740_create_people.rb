@@ -31,6 +31,8 @@ class CreatePeople < ActiveRecord::Migration[6.0]
       t.boolean :is_traveling
       t.boolean :hide_age
       t.boolean :hide_distance
+
+      t.references :account, foreign_key: true
     end
   end
 end

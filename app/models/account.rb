@@ -1,6 +1,7 @@
 class Account < ApplicationRecord
   has_many :profiles
   has_many :matches
+  has_many :raw_data
 
   # @return Account
   # @param Hash JSON response of from a profile request

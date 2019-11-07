@@ -1,5 +1,6 @@
 class Person < ApplicationRecord
   has_many :matches
+  belongs_to :account # The initial import account
 
   serialize :photos
 
