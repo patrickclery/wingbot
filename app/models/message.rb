@@ -5,6 +5,8 @@ class Message < ApplicationRecord
 
   serialize :photos
 
+  # @return ApplicationRecord::Message
+  # @param Tinder::Message
   def self.from_message(message)
     match = Match.find_by(tinder_match_id: message.match_id)
     new content:           message.message,

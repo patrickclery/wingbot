@@ -2,8 +2,8 @@ class Match < ApplicationRecord
   belongs_to :person, required: true, autosave: true
   has_one :account, through: :person
 
-  # @param Tinder::Match
   # @return ApplicationRecord::Match
+  # @param Tinder::Match
   def self.from_match(match_struct)
 
     tinder_match_id = match_struct._id

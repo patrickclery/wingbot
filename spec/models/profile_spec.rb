@@ -6,8 +6,8 @@ RSpec.describe Profile, type: :model do
 
   describe 'schema' do
     it { should belong_to(:account).required.autosave(true) }
-    it { should have_db_column(:name).of_type(:string).with_options(presence: true) }
-    it { should have_db_column(:account_id).of_type(:integer).with_options(presence: true) }
+    it { should have_db_column(:name).of_type(:string).presence }
+    it { should have_db_column(:account_id).of_type(:integer).presence }
     it { should have_db_column(:bio).of_type(:text) }
     it { should have_db_column(:birthdate).of_type(:date) }
     it { should have_db_column(:city).of_type(:string) }
@@ -20,7 +20,7 @@ RSpec.describe Profile, type: :model do
     it { should have_db_column(:photos).of_type(:text) }
     it { should have_db_column(:schools).of_type(:text) }
     it { should have_db_column(:jobs).of_type(:text) }
-    it { should have_db_column(:tinder_id).of_type(:string) }
+    it { should have_db_column(:tinder_id).of_type(:string).presence }
     # Timestamps
     it { should have_db_column(:active_at).of_type(:datetime) }
     it { should have_db_column(:created_at).of_type(:datetime) }

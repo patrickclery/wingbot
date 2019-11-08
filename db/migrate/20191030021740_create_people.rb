@@ -19,7 +19,7 @@ class CreatePeople < ActiveRecord::Migration[6.0]
       t.text :teaser
 
       # Keys provided by tinder
-      t.string :tinder_id
+      t.string :tinder_id, required: true
 
       # Timestamps
       t.timestamp :active_at
