@@ -11,7 +11,7 @@ class CreateMessages < ActiveRecord::Migration[6.0]
       t.timestamp :created_at
       t.timestamp :deleted_at
 
-      t.references :match, optional: false
+      t.references :match, required: true
       t.references :message, foreign_key: 'parent_id', optional: true
     end
 

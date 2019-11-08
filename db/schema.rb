@@ -101,11 +101,23 @@ ActiveRecord::Schema.define(version: 2019_11_05_060000) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.boolean "is_active"
-    t.json "data"
+    t.boolean "hide_age"
+    t.boolean "hide_distance"
+    t.boolean "is_traveling"
+    t.date "birthdate"
+    t.string "city"
+    t.string "gender"
+    t.string "instagram_username"
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.string "tinder_id"
+    t.text "bio"
+    t.text "jobs", array: true
+    t.text "photos", array: true
+    t.text "schools", array: true
+    t.datetime "active_at"
+    t.datetime "created_at"
+    t.datetime "deleted_at"
+    t.datetime "updated_at"
     t.bigint "account_id"
     t.index ["account_id"], name: "index_profiles_on_account_id"
   end

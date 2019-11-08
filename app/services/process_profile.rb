@@ -1,28 +1,19 @@
 class ProcessProfile
 
-  # Fetches the latest profile and handles errors
-  # @raise Exception if the request fails
   # @return Boolean true
-  class << self
-
-    def call
-      RawData.where(imported_at: nil, tag: 'profile').each do |rec|
-        profile           = rec.to_profile
-        tinder_account_id = profile.user._id
-        account           = Account.find_or_initialize_by(tinder_id: tinder_account_id)
-        account.assign_attributes is_email_verified: false,
-                                  is_active:         false,
-                                  name:              profile.user.name,
-                                  email:             profile.account.account_email,
-                                  phone_number:      profile.account.account_phone_number,
-                                  data:              profile.to_json
-        account.save
-        rec.mark_as_imported!
-        account
+  def self.call
+    RawData.where(imported_at: nil, tag: 'profile').each do |rec|
+      profile_struct = rec.to_profile
+      Account.from_profile(profile_struct).then do |account|
+        Profile.from_profile(profile_struct).then do |profile|
+          profile.account = account
+          profile.save!
+        end
+        account.save!
       end
-      true
+      rec.mark_as_imported!
     end
-
+    true
   end
 
 end

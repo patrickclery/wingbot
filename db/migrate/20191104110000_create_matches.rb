@@ -28,8 +28,8 @@ class CreateMatches < ActiveRecord::Migration[6.0]
       t.timestamp :updated_at
       t.timestamp :unmatched_at
 
-      t.references :person, foreign_key: true, optional: false
-      t.references :account, foreign_key: true, optional: false
+      t.references :person, foreign_key: true, required: true
+      t.references :account, foreign_key: true, required: true
     end
   end
 end

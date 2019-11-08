@@ -16,6 +16,7 @@ module RSpec
     it { should be true }
     it { expect(described_class).to respond_to(:call) }
     it { expect { subject }.to change { Account.count }.by(1) }
+    it { expect { subject }.to change { Profile.count }.by(1) }
     it { expect { subject }.to change { RawData.where(imported_at: nil, tag: 'profile').count }.from(1).to(0) }
   end
 #############################################################################

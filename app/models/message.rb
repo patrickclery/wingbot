@@ -1,6 +1,6 @@
 class Message < ApplicationRecord
   has_many :replies, class_name: 'Message', foreign_key: 'parent_id'
-  belongs_to :message, class_name: 'Message', foreign_key: 'parent_id', optional: true
+  belongs_to :message, foreign_key: 'parent_id', optional: true
   belongs_to :match
 
   serialize :photos

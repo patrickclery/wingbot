@@ -31,7 +31,7 @@ RSpec.describe Match, type: :model do
   it { should have_db_column(:person_id).of_type(:integer) }
   it { should have_db_column(:readreceipt).of_type(:integer).with_options(array: true) }
   it { should have_db_column(:seen).of_type(:integer).with_options(array: true) }
-  it { should have_db_column(:tinder_match_id).of_type(:string).with_options(optional: false) }
+  it { should have_db_column(:tinder_match_id).of_type(:string).with_options(required: true) }
   # Timestamps
   it { should have_db_column(:created_at).of_type(:datetime) }
   it { should have_db_column(:unmatched_at).of_type(:datetime) }
