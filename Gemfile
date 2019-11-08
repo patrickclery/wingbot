@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'dry-initializer', git: 'https://github.com/dry-rb/dry-initializer.git'
 gem 'dry-struct', git: 'https://github.com/dry-rb/dry-struct.git'
 gem 'dry-types', git: 'https://github.com/dry-rb/dry-types.git'
-gem 'tinder_client', path: '../tinder_client'
+gem 'tinder_client', '~> 0.1.5', git: 'https://github.com/patrickclery/better_tinder.git'
 gem 'graphql'
 
 group :test do
