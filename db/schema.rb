@@ -10,17 +10,132 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_30_083654) do
+ActiveRecord::Schema.define(version: 2019_11_05_060000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "raw_data", force: :cascade do |t|
+  create_table "accounts", force: :cascade do |t|
+    t.boolean "is_email_verified"
+    t.boolean "is_active"
+    t.string "email"
+    t.string "name"
+    t.string "phone_number"
+    t.string "tinder_id"
+    t.datetime "last_active_at"
     t.json "data"
-    t.string "tag"
-    t.datetime "imported_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "matches", force: :cascade do |t|
+    t.bigint "people_id"
+    t.boolean "is_boost_match"
+    t.boolean "is_closed"
+    t.boolean "is_dead"
+    t.boolean "is_fast_match"
+    t.boolean "is_following"
+    t.boolean "is_following_moments"
+    t.boolean "is_muted"
+    t.boolean "is_pending"
+    t.boolean "is_super_like"
+    t.datetime "last_active_at"
+    t.datetime "matched_at"
+    t.integer "common_friend_count"
+    t.integer "common_like_count"
+    t.integer "participants", array: true
+    t.integer "readreceipt", array: true
+    t.integer "seen", array: true
+    t.string "tinder_match_id", null: false
+    t.datetime "active_at"
+    t.datetime "created_at"
+    t.datetime "deleted_at"
+    t.datetime "updated_at"
+    t.datetime "unmatched_at"
+    t.bigint "person_id"
+    t.bigint "account_id"
+    t.index ["account_id"], name: "index_matches_on_account_id"
+    t.index ["people_id"], name: "index_matches_on_people_id"
+    t.index ["person_id"], name: "index_matches_on_person_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
+    t.string "tinder_message_id"
+    t.boolean "is_outgoing"
+    t.integer "parent_id"
+    t.datetime "sent_at"
+    t.datetime "created_at"
+    t.datetime "deleted_at"
+    t.bigint "match_id"
+    t.bigint "message_id"
+    t.index ["match_id"], name: "index_messages_on_match_id"
+    t.index ["message_id"], name: "index_messages_on_message_id"
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.date "birthdate"
+    t.integer "distance_mi"
+    t.string "gender"
+    t.string "instagram_id"
+    t.string "instagram_username"
+    t.string "name"
+    t.text "bio"
+    t.string "city"
+    t.text "common_friends"
+    t.text "instagram_photos"
+    t.text "jobs"
+    t.text "photos"
+    t.text "schools"
+    t.text "teaser"
+    t.string "tinder_id"
+    t.datetime "active_at"
+    t.datetime "created_at"
+    t.datetime "deleted_at"
+    t.datetime "updated_at"
+    t.boolean "is_traveling"
+    t.boolean "hide_age"
+    t.boolean "hide_distance"
+    t.bigint "account_id"
+    t.index ["account_id"], name: "index_people_on_account_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.boolean "hide_age"
+    t.boolean "hide_distance"
+    t.boolean "is_traveling"
+    t.date "birthdate"
+    t.string "city"
+    t.string "gender"
+    t.string "instagram_username"
+    t.string "name"
+    t.string "tinder_id"
+    t.text "bio"
+    t.text "jobs", array: true
+    t.text "photos", array: true
+    t.text "schools", array: true
+    t.datetime "active_at"
+    t.datetime "created_at"
+    t.datetime "deleted_at"
+    t.datetime "updated_at"
+    t.bigint "account_id"
+    t.index ["account_id"], name: "index_profiles_on_account_id"
+  end
+
+  create_table "raw_data", force: :cascade do |t|
+    t.json "data"
+    t.datetime "imported_at"
+    t.string "tag"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "account_id"
+    t.index ["account_id"], name: "index_raw_data_on_account_id"
+  end
+
+  add_foreign_key "matches", "accounts"
+  add_foreign_key "matches", "people"
+  add_foreign_key "messages", "messages"
+  add_foreign_key "people", "accounts"
+  add_foreign_key "profiles", "accounts"
+  add_foreign_key "raw_data", "accounts"
 end
