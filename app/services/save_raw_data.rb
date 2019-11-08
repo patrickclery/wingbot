@@ -3,7 +3,7 @@ class SaveRawData
   # @raise Exception if it's an invalid tag
   # @return Boolean true
   def self.call(tag:, api_token:)
-    raise unless %i{ updates profile recommendations }.include?(tag)
+    raise unless %i{ updates profile recommendations }.include?(tag.to_sym)
 
     client           = Tinder::Client.new
     client.api_token = api_token
