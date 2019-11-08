@@ -24,12 +24,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'dry-initializer', git: 'https://github.com/dry-rb/dry-initializer.git'
 gem 'dry-struct', git: 'https://github.com/dry-rb/dry-struct.git'
 gem 'dry-types', git: 'https://github.com/dry-rb/dry-types.git'
-gem 'tinder_client', git: 'https://github.com/patrickclery/tinder_client.git'
+gem 'tinder_client', '~> 0.1.5', git: 'https://github.com/patrickclery/tinder_client.git'
 gem 'graphql'
 
 group :test do
-  gem 'capybara'
-  gem 'webdrivers'
   gem 'database_cleaner'
   gem 'rspec', '~> 3.8'
   gem 'rspec-core', '~> 3.8'
@@ -39,6 +37,9 @@ group :test do
   gem 'shoulda-matchers'
   gem 'webmock'
   gem 'rspec-graphql_matchers', git: 'https://github.com/khamusa/rspec-graphql_matchers', ref: '6633aa7'
+  gem 'factory_bot'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
