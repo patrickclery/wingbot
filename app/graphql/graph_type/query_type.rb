@@ -13,5 +13,13 @@ module GraphType
     def people
       Person.all
     end
+
+    def matches
+      Match.all
+    end
+
+    def messages
+      Message.all
+    end
   end
 end
