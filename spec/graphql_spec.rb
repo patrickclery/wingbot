@@ -7,9 +7,8 @@ RSpec.describe GraphType::RawDataType, type: :graphtype do
   it { should have_field("tag")       .of_type("String!") }
   # Timestamps
   it { should have_field("created-at").of_type("ISO8601DateTime!") }
-  it { should have_field("updated-at").of_type("ISO8601DateTime!") }
   it { should have_field("deleted-at").of_type("ISO8601DateTime!") }
-  it { should have_field("updated-at").of_type("ISO8601DateTime!") }
+  it { should have_field("updated-at").of_type("ISO8601DateTime!") }d
 end
 
 ###############################################################################
@@ -33,7 +32,6 @@ RSpec.describe GraphType::PersonType, type: :graphtype do
   # Timestamps
   it { should have_field("active-at")         .of_type("ISO8601DateTime!") }
   it { should have_field("created-at")        .of_type("ISO8601DateTime!") }
-  it { should have_field("updated-at")        .of_type("ISO8601DateTime!") }
   it { should have_field("deleted-at")        .of_type("ISO8601DateTime!") }
   it { should have_field("updated-at")        .of_type("ISO8601DateTime!") }
 end
