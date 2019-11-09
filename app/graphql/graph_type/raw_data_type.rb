@@ -14,3 +14,4 @@ module GraphType
 
   end
 end
+

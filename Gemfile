@@ -9,8 +9,9 @@ gem 'rails', '~> 6.0.0'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
+gem 'sprockets-rails'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
-gem 'webpacker', '~> 4.0'
+gem 'webpacker'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
@@ -25,7 +26,8 @@ gem 'dry-initializer', git: 'https://github.com/dry-rb/dry-initializer.git'
 gem 'dry-struct', git: 'https://github.com/dry-rb/dry-struct.git'
 gem 'dry-types', git: 'https://github.com/dry-rb/dry-types.git'
 gem 'tinder_client', '~> 0.1.5', git: 'https://github.com/patrickclery/tinder_client.git'
-gem 'graphql'
+gem 'graphql', git: 'https://github.com/rmosolgo/graphql-ruby'
+gem 'graphiql-rails'
 
 group :test do
   gem 'database_cleaner'
@@ -59,4 +61,3 @@ group :test, :development do
   gem 'codecov'
 end
 
-gem 'graphiql-rails', group: :development
