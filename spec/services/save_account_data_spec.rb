@@ -1,8 +1,8 @@
 ###############################################################################
 RSpec.describe SaveProfile do
+
   include_context 'stubs'
 
-  let(:api_token) { "12a3bc45-a123-123a-1a23-1234abc4de5f" }
   subject { SaveProfile.call(api_token: api_token) }
 
   it { expect { subject }.to change { Account.count }.by(1) }
@@ -15,7 +15,6 @@ end
 RSpec.describe SaveUpdates do
   include_context 'stubs'
 
-  let(:api_token) { "12a3bc45-a123-123a-1a23-1234abc4de5f" }
   subject { SaveUpdates.call(api_token: api_token) }
 
   it { expect { subject }.to change { Account.count }.by(1) }
@@ -26,9 +25,9 @@ end
 
 ###############################################################################
 RSpec.describe SaveRecommendations do
+
   include_context 'stubs'
 
-  let(:api_token) { "12a3bc45-a123-123a-1a23-1234abc4de5f" }
   subject { SaveRecommendations.call(api_token: api_token) }
 
   it { expect { subject }.to change { Account.count }.by(1) }

@@ -1,7 +1,7 @@
 # ### FOR DEVELOPERS:
 #
 # You can make use of my spec stubs by requiring them in your in your spec
-# helper: require the file `tinder_client/spec/contexts/http_request_stubs.rb`
+# helper: require the file `better_tinder/spec/contexts/stubs.rb`
 # in your $APP/spec/spec_helper.rb, then call the client as you would normally
 # and the requests will be stubbed.
 RSpec.shared_context 'stubs' do
