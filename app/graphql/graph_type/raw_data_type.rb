@@ -1,9 +1,9 @@
 module GraphType
   class RawDataType < BaseObject
 
-    field "id", ID, null: false
-    field "json", String, null: false
-    field "tag", String, null: false
+    field "id",         ID,                              null: false
+    field "json",       String,                          null: false
+    field "tag",        String,                          null: false
 
     # Timestamps
     field "created-at", GraphQL::Types::ISO8601DateTime, null: false
