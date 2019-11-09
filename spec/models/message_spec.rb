@@ -11,7 +11,7 @@ RSpec.describe Message, type: :model do
   it { should belong_to(:message).with_foreign_key(:parent_id).optional }
   it { should have_db_column(:content) }
   it { should have_db_column(:is_outgoing).of_type(:boolean) }
-  it { should have_db_column(:tinder_message_id) }
+  it { should have_db_column(:tinder_message_id).of_type(:string) }
   it { should have_db_column(:created_at).of_type(:datetime) }
   it { should have_db_column(:deleted_at).of_type(:datetime) }
   it { should have_db_column(:sent_at).of_type(:datetime) }
