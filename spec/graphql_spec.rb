@@ -68,7 +68,6 @@ RSpec.describe GraphType::MatchType, type: :graphtype do
   it { should have_field("is-super-like")       .of_type("Boolean!") }
   it { should have_field("tinder-match-id")     .of_type("String!") }
   it { should have_field("person-id")           .of_type("Int!") }
-
   it { should have_field("participants")        .of_type("[Int!]!") }
   it { should have_field("readreceipt")         .of_type("[Int!]!") }
   it { should have_field("seen")                .of_type("[Int!]!") }
