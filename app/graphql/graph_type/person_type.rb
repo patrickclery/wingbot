@@ -16,6 +16,7 @@ module GraphType
     field "schools", String, null: false
     field "tinder-id", String, null: false
 
+    # Timestamps
     field "active-at", GraphQL::Types::ISO8601DateTime, null: false
     field "created-at", GraphQL::Types::ISO8601DateTime, null: false
     field "updated-at", GraphQL::Types::ISO8601DateTime, null: false

@@ -5,7 +5,7 @@ module GraphType
     field "json", String, null: false
     field "tag", String, null: false
 
-    field "active-at", GraphQL::Types::ISO8601DateTime, null: false
+    # Timestamps
     field "created-at", GraphQL::Types::ISO8601DateTime, null: false
     field "updated-at", GraphQL::Types::ISO8601DateTime, null: false
     field "deleted-at", GraphQL::Types::ISO8601DateTime, null: false
