@@ -3,8 +3,10 @@ module GraphType
     graphql_name "Query"
     description "The root query"
 
-    field :data, [RawDataType], null: true
-    field :people, [PersonType], null: true
+    field :data,     [RawDataType], null: true
+    field :people,   [PersonType],  null: true
+    field :messages, [MessageType], null: true
+    field :matches,  [MatchType],   null: true
 
     def data
       RawData.all
