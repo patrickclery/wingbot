@@ -8,7 +8,7 @@ RSpec.describe GraphType::RawDataType, type: :graphtype do
   # Timestamps
   it { should have_field("created-at").of_type("ISO8601DateTime!") }
   it { should have_field("deleted-at").of_type("ISO8601DateTime!") }
-  it { should have_field("updated-at").of_type("ISO8601DateTime!") }d
+  it { should have_field("updated-at").of_type("ISO8601DateTime!") }
 end
 
 ###############################################################################
