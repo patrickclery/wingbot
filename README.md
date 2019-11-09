@@ -78,5 +78,26 @@ Start rails `rails s`, then open your browser to https://localhost.local:3000/gr
        tag
        json
      }
+     person {
+        id
+        bio
+        birthdate
+        city
+        gender
+        hide-age
+        hide-distance
+        instagram-id
+        instagram-username
+        is-traveling
+        name
+        photos
+        schools
+        tinder-id
+        active-at
+        created-at
+        updated-at
+        deleted-at
+        updated-at
+     }
    }
    ```
