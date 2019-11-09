@@ -70,13 +70,28 @@ Downloads your Tinder account data using the token created by `rake tinder:save_
 ## Accessing your data
 
 Start rails `rails s`, then open your browser to https://localhost.local:3000/graphiql and use GraphQL (the language itself) to interact with the data.
-   
-   ```graphql
-   {
-     data {
-       id
-       tag
-       json
-     }
-   }
-   ```
+
+## Schema
+
+- [config/schema.graphql](config/schema.graphql)
+ 
+### GraphQL Query: _Return saved HTTP responses from Tinder_
+  
+```GraphQL
+{
+  data {
+    id
+    tag
+    json
+  }
+}  
+```
+
+### GraphQL Query: _Return person ID = 1_
+_Return saved HTTP responses from Tinder_
+
+```GraphQL
+{
+  person(id: 1)
+}
+```
