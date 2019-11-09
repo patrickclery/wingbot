@@ -1,5 +1,6 @@
 module GraphType
   class PersonType < BaseObject
+
     field "id", ID, null: false
     field "bio", String, null: false
     field "birthdate", GraphQL::Types::ISO8601DateTime, null: false
@@ -20,5 +21,6 @@ module GraphType
     field "updated-at", GraphQL::Types::ISO8601DateTime, null: false
     field "deleted-at", GraphQL::Types::ISO8601DateTime, null: false
     field "updated-at", GraphQL::Types::ISO8601DateTime, null: false
+
   end
 end

@@ -4,6 +4,12 @@ RSpec.describe GraphType::RawDataType, type: :graphtype do
   it { should have_field(:id).of_type("ID!") }
   it { should have_field(:json).of_type("String!") }
   it { should have_field(:tag).of_type("String!") }
+
+  # Timestamps
+  it { should have_field("created-at").of_type("ISO8601DateTime!") }
+  it { should have_field("updated-at").of_type("ISO8601DateTime!") }
+  it { should have_field("deleted-at").of_type("ISO8601DateTime!") }
+  it { should have_field("updated-at").of_type("ISO8601DateTime!") }
 end
 
 RSpec.describe GraphType::PersonType, type: :graphtype do
