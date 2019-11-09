@@ -1,0 +1,80 @@
+"""
+An ISO 8601-encoded datetime
+"""
+scalar ISO8601DateTime
+
+type Match {
+    common-friend-count: Int!
+    common-like-count: Int!
+    created-at: ISO8601DateTime!
+    deleted-at: ISO8601DateTime!
+    id: ID!
+    is-boost-match: Boolean!
+    is-closed: Boolean!
+    is-dead: Boolean!
+    is-fast-match: Boolean!
+    is-following: Boolean!
+    is-following-moments: Boolean!
+    is-muted: Boolean!
+    is-pending: Boolean!
+    is-super-like: Boolean!
+    last-active-at: ISO8601DateTime!
+    matched-at: ISO8601DateTime!
+    participants: [Int!]!
+    person-id: Int!
+    readreceipt: [Int!]!
+    seen: [Int!]!
+    sent-at: ISO8601DateTime!
+    tinder-match-id: String!
+}
+
+type Message {
+    content: String!
+    created-at: ISO8601DateTime!
+    deleted-at: ISO8601DateTime!
+    id: ID!
+    is-outgoing: Boolean!
+    person: Person!
+    sent-at: ISO8601DateTime!
+    tinder-message-id: String!
+}
+
+type Person {
+    active-at: ISO8601DateTime!
+    bio: String!
+    birthdate: ISO8601DateTime!
+    city: String!
+    created-at: ISO8601DateTime!
+    deleted-at: ISO8601DateTime!
+    gender: String!
+    hide-age: Boolean!
+    hide-distance: Boolean!
+    id: ID!
+    instagram-id: String!
+    instagram-username: String!
+    is-traveling: Boolean!
+    name: String!
+    photos: String!
+    schools: String!
+    tinder-id: String!
+    updated-at: ISO8601DateTime!
+}
+
+"""
+The root query
+"""
+type Query {
+    data: [RawData!]
+    matches: [Match!]
+    messages: [Message!]
+    people: [Person!]
+}
+
+type RawData {
+    created-at: ISO8601DateTime!
+    deleted-at: ISO8601DateTime!
+    id: ID!
+    json: String!
+    tag: String!
+    updated-at: ISO8601DateTime!
+}
