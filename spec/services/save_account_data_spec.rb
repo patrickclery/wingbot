@@ -13,6 +13,7 @@ end
 
 ###############################################################################
 RSpec.describe SaveUpdates do
+
   include_context 'stubs'
 
   subject { SaveUpdates.call(api_token: api_token) }
@@ -38,7 +39,8 @@ end
 
 ###############################################################################
 RSpec.describe SaveAccountData, type: :service do
-  include_examples 'stubs'
+  include_context 'stubs'
+
   subject { SaveAccountData.call(api_token: api_token) }
 
   it { expect(SaveAccountData).to respond_to(:call).with_keywords(:api_token) }
