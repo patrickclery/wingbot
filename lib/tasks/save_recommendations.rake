@@ -13,7 +13,7 @@ namespace :tinder do
   task :save_recommendations do
     require File.expand_path('../../../config/environment', __FILE__)
     api_token = IO.read(token_path).chomp
-    SaveRecommendations.call(tag: 'recommendations', api_token: api_token)
+    SaveRecommendations.call(api_token: api_token)
   end
 
 end
