@@ -81,6 +81,6 @@ end
     it { should have_field("deleted-at")          .of_type("ISO8601DateTime!") }
     it { should have_field("sent-at")             .of_type("ISO8601DateTime!") }
 
-    end
-
   end
+
+end
