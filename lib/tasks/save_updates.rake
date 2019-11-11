@@ -9,25 +9,25 @@ load "#{gem_dir}/lib/tasks/tinder.rake"
 
 namespace :tinder do
 
+  desc 'Save profile'
+  task :save_profile do
+    require File.expand_path('../../../config/environment', __FILE__)
+    api_token = IO.read(token_path).chomp
+    SaveProfile.call(api_token: api_token)
+  end
+
   desc 'Save recommendations'
   task :save_recommendations do
     require File.expand_path('../../../config/environment', __FILE__)
     api_token = IO.read(token_path).chomp
-    SaveRawData.call(tag: 'recommendations', api_token: api_token)
+    SaveRecommendations.call(api_token: api_token)
   end
 
   desc 'Save updates'
   task :save_updates do
     require File.expand_path('../../../config/environment', __FILE__)
     api_token = IO.read(token_path).chomp
-    SaveRawData.call(tag: 'updates', api_token: api_token)
-  end
-
-  desc 'Save profile'
-  task :save_profile do
-    require File.expand_path('../../../config/environment', __FILE__)
-    api_token = IO.read(token_path).chomp
-    SaveRawData.call(tag: 'profile', api_token: api_token)
+    SaveUpdates.call(api_token: api_token)
   end
 
 end
