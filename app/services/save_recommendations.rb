@@ -7,12 +7,10 @@ class SaveRecommendations
     profile          = client.profile
     account          = Account.from_profile(profile)
 
-    client.get_recommendations.each do |recommendations|
-      RawData.create account: Account.from_profile(profile),
-                     data:    recommendations,
-                     tag:     'recommendations'
+    RawData.create account: Account.from_profile(profile),
+                   data:    client.recommendations,
+                   tag:     'recommendations'
 
-    end
     true
   end
 end

@@ -33,7 +33,7 @@ RSpec.describe SaveRecommendations do
 
   it { expect { subject }.to change { Account.count }.by(1) }
   it { expect(subject).to be true }
-  it { expect { subject }.to change { RawData.where(imported_at: nil, tag: 'recommendations').count }.by(4) }
+  it { expect { subject }.to change { RawData.where(imported_at: nil, tag: 'recommendations').count }.by(1) }
 end
 
 
