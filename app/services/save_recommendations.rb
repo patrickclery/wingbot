@@ -10,7 +10,6 @@ class SaveRecommendations
     RawData.create account: Account.from_profile(profile),
                    data:    client.recommendations,
                    tag:     'recommendations'
-
     true
   end
 end
