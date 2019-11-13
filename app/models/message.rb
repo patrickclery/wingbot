@@ -3,8 +3,6 @@ class Message < ApplicationRecord
   belongs_to :message, foreign_key: 'parent_id', optional: true
   belongs_to :match
 
-  serialize :photos
-
   # @return ApplicationRecord::Message
   # @param Tinder::Message
   def self.from_message(message)

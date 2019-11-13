@@ -1,3 +1,5 @@
+require 'tinder/client'
+
 class RawData < ApplicationRecord
   belongs_to :account, autosave: true
 
