@@ -1,7 +1,9 @@
 RSpec.describe BetterTinder do
   it { should be_a(Module) }
 
+  # Verify that all the gems we need are being loaded
   describe 'Dependencies' do
+    it { expect(Gem.loaded_specs.has_key? 'codecov').to be true }
     it { expect(Gem.loaded_specs.has_key? 'database_cleaner').to be true }
     it { expect(Gem.loaded_specs.has_key? 'debase').to be true }
     it { expect(Gem.loaded_specs.has_key? 'dry-initializer').to be true }
