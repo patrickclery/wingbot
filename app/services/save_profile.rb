@@ -10,7 +10,6 @@ class SaveProfile
     RawData.create account: Account.from_profile(profile),
                    data:    profile.to_hash,
                    tag:     'profile'
-
     true
   end
 end
