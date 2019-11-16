@@ -36,6 +36,12 @@ Code Coverage: [![codecov](https://codecov.io/gh/patrickclery/better_tinder/bran
 
 ### Saving data from Tinder
 
+Environment Variables:
+
+```.env
+EXPORT_PATH="/tmp"    # This is the directory where your JSON exports output to
+```
+
 Use rake tasks to save your data 
 
   ```
