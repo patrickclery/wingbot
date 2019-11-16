@@ -62,5 +62,6 @@ group :test, :development do
   gem 'debase'
   gem 'simplecov'
   gem 'codecov'
+  gem 'timecop'
 end
 

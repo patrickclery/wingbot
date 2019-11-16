@@ -31,6 +31,7 @@ RSpec.describe BetterTinder do
     it { expect(Gem.loaded_specs.has_key? 'spring-watcher-listen').to be true }
     it { expect(Gem.loaded_specs.has_key? 'sprockets-rails').to be true }
     it { expect(Gem.loaded_specs.has_key? 'tinder_client').to be true }
+    it { expect(Gem.loaded_specs.has_key? 'timecop').to be true }
     it { expect(Gem.loaded_specs.has_key? 'vcr').to be true }
     it { expect(Gem.loaded_specs.has_key? 'web-console').to be true }
     it { expect(Gem.loaded_specs.has_key? 'webmock').to be true }
