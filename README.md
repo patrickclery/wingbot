@@ -39,9 +39,9 @@ Code Coverage: [![codecov](https://codecov.io/gh/patrickclery/better_tinder/bran
 Use rake tasks to save your data 
 
   ```
-  rake tinder:save_token       # Save an API token to $token_path ake tinder:get_updates      # Fetch updates
-  rake tinder:save_recommendations  # Fetch recommendations
-  rake tinder:save_updates  # Save your Tinder account data
+rake tinder:save_token           # Save an API token to $token_path ake tinder:get_updates # Fetch updates
+rake tinder:save_recommendations # Fetch recommendations
+rake tinder:save_updates         # Save your Tinder account data
   ```
 
 To grab a token, call a rake command & specify the `phone_number` or `api_token` in your environment variables.

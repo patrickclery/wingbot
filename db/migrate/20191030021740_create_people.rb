@@ -8,15 +8,15 @@ class CreatePeople < ActiveRecord::Migration[6.0]
       t.string :instagram_username
       t.string :name
       t.text :bio
-      t.string :city
 
       # Collections
-      t.text :common_friends
-      t.text :instagram_photos
-      t.text :jobs
-      t.text :photos
-      t.text :schools
-      t.text :teaser
+      t.json :city
+      t.json :common_friends
+      t.json :instagram_photos
+      t.json :jobs
+      t.json :photos
+      t.json :schools
+      t.json :teaser
 
       # Keys provided by tinder
       t.string :tinder_id, required: true
