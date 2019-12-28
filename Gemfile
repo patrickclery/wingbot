@@ -28,6 +28,7 @@ gem 'dry-types',      git: 'https://github.com/dry-rb/dry-types.git'
 gem 'tinder_client',  path: '../tinder_client'
 gem 'graphql',        git: 'https://github.com/rmosolgo/graphql-ruby'
 gem 'graphiql-rails'
+gem 'react-rails'
 
 group :test do
   gem 'database_cleaner'
