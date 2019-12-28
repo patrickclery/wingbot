@@ -32,6 +32,22 @@ end
     it { should have_field("photos")            .of_type("String!") }
     it { should have_field("schools")           .of_type("String!") }
     it { should have_field("tinder-id")         .of_type("String!") }
+
+    it { should accept_argument("id").of_type("ID!") }
+    it { should accept_argument("bio").of_type("String!") }
+    it { should accept_argument("birthdate").of_type("ISO8601DateTime!") }
+    it { should accept_argument("city").of_type("String!") }
+    it { should accept_argument("gender").of_type("String!") }
+    it { should accept_argument("hide-age").of_type("Boolean!") }
+    it { should accept_argument("hide-distance").of_type("Boolean!") }
+    it { should accept_argument("instagram-id").of_type("String!") }
+    it { should accept_argument("instagram-username").of_type("String!") }
+    it { should accept_argument("is-traveling").of_type("Boolean!") }
+    it { should accept_argument("name").of_type("String!") }
+    it { should accept_argument("photos").of_type("String!") }
+    it { should accept_argument("schools").of_type("String!") }
+    it { should accept_argument("tinder-id").of_type("String!") }
+
     # Timestamps
     it { should have_field("active-at")         .of_type("ISO8601DateTime!") }
     it { should have_field("created-at")        .of_type("ISO8601DateTime!") }

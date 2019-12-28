@@ -4,7 +4,7 @@ module GraphType
 
     field "id",                 ID
     field "bio",                String
-    field "birthdate",          ISO8601DateTime
+    field "birthdate",          ISO8601Date
     field "city",               String
     field "gender",             String
     field "hide-age",           Boolean
