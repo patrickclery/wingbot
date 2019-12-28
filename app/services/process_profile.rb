@@ -1,17 +1,20 @@
 class ProcessProfile
 
+  # Extracts and saves all profiles waiting to be processed
   # @return Boolean true
   def self.call
     RawData.where(imported_at: nil, tag: 'profile').each do |rec|
-      profile_struct = rec.to_profile
-      Account.from_profile(profile_struct).then do |account|
-        Profile.from_profile(profile_struct).then do |profile|
-          profile.account = account
-          profile.save!
+      ActiveRecord::Base.transaction do
+        profile_struct = rec.to_profile
+        Account.from_profile(profile_struct).then do |account|
+          Profile.from_profile(profile_struct).then do |profile|
+            profile.account = account
+            profile.save!
+          end
+          account.save!
         end
-        account.save!
+        rec.mark_as_imported!
       end
-      rec.mark_as_imported!
     end
     true
   end

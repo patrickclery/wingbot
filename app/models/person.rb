@@ -2,8 +2,6 @@ class Person < ApplicationRecord
   has_many :matches, autosave: true
   belongs_to :account, required: true, autosave: true
 
-
-
   # @param Tinder::User
   def self.from_recommendation(recommendation)
     obj = new bio:           recommendation.user.bio,
