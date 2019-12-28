@@ -35,9 +35,6 @@ RSpec.describe ExportRawData do
   end
 
   ###########################################################################
-  # Responds to an ENV
-
-  ###########################################################################
   # Delegations
   it 'calls raw data', pending: true do
     expect(RawData).to receive(:all)
