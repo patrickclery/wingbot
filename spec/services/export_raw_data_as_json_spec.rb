@@ -1,4 +1,3 @@
-#############################################################################
 RSpec.describe ExportRawData do
 
   around(:each) do |example|
