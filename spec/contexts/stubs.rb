@@ -1,7 +1,7 @@
 # ### FOR DEVELOPERS:
 #
 # You can make use of my spec stubs by requiring them in your in your spec
-# helper: require the file `better_tinder/spec/contexts/stubs.rb`
+# helper: require the file `wingbot/spec/contexts/stubs.rb`
 # in your $APP/spec/spec_helper.rb, then call the client as you would normally
 # and the requests will be stubbed.
 #
@@ -72,7 +72,7 @@ RSpec.shared_context 'stubs' do
                                           "data": updates_data }))
 
     # Profile
-    stub_request(:get, "https://api.gotinder.com/v2/profile?include=account,boost,email_settings,instagram,likes,notifications,plus_control,products,purchase,spotify,super_likes,tinder_u,travel,tutorials,user")
+    stub_request(:get, "https://api.gotinder.com/v2/profile?include=account%2Cboost%2Cemail_settings%2Cinstagram%2Clikes%2Cnotifications%2Cplus_control%2Cproducts%2Cpurchase%2Cspotify%2Csuper_likes%2Ctinder_u%2Ctravel%2Ctutorials%2Cuser")
       .to_return(headers: { "Content-Type" => "application/json" },
                  body:    JSON.generate({ "meta": { "status": 200 },
                                           "data": profile_data }))
