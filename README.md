@@ -1,7 +1,7 @@
 
-RSpec Tests: [![CircleCI](https://circleci.com/gh/patrickclery/tinder_client.svg?style=svg)](https://circleci.com/gh/patrickclery/better_tinder)
+RSpec Tests: [![CircleCI](https://circleci.com/gh/patrickclery/tinder_client.svg?style=svg)](https://circleci.com/gh/patrickclery/wingbot)
 
-Code Coverage: [![codecov](https://codecov.io/gh/patrickclery/better_tinder/branch/master/graph/badge.svg)](https://codecov.io/gh/patrickclery/better_tinder)
+Code Coverage: [![codecov](https://codecov.io/gh/patrickclery/wingbot/branch/master/graph/badge.svg)](https://codecov.io/gh/patrickclery/wingbot)
 
 ## Better Tinder 
 
@@ -17,7 +17,7 @@ Code Coverage: [![codecov](https://codecov.io/gh/patrickclery/better_tinder/bran
 1. Clone repo.
    
    ```shell script
-   git clone https://github.com/patrickclery/better_tinder.git
+   git clone https://github.com/patrickclery/wingbot.git
    ```
    
 2. Install dependencies.

@@ -1,5 +1,5 @@
 {
-  "name": "better_tinder",
+  "name": "wingbot",
   "private": true,
   "dependencies": {
     "@babel/preset-react": "^7.0.0",
