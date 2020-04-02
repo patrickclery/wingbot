@@ -12,4 +12,16 @@ namespace :tinder do
     ProcessRecommendations.call
   end
 
+  desc 'Process profile'
+  task :process_profile do
+    require File.expand_path('../../../config/environment', __FILE__)
+    ProcessProfile.call
+  end
+
+  desc 'Process updates'
+  task :process_updates do
+    require File.expand_path('../../../config/environment', __FILE__)
+    ProcessUpdates.call
+  end
+
 end

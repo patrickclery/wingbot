@@ -12,7 +12,7 @@ module RSpec
     it { should have_field("created-at").of_type("ISO8601DateTime!") }
     it { should have_field("deleted-at").of_type("ISO8601DateTime!") }
     it { should have_field("updated-at").of_type("ISO8601DateTime!") }
-end
+  end
 
   ###############################################################################
   describe PersonType do
@@ -20,7 +20,7 @@ end
 
     it { should have_field("id")                .of_type("ID!") }
     it { should have_field("bio")               .of_type("String!") }
-    it { should have_field("birthdate")         .of_type("ISO8601DateTime!") }
+    it { should have_field("birthdate")         .of_type("ISO8601Date!") }
     it { should have_field("city")              .of_type("String!") }
     it { should have_field("gender")            .of_type("String!") }
     it { should have_field("hide-age")          .of_type("Boolean!") }
@@ -32,21 +32,6 @@ end
     it { should have_field("photos")            .of_type("String!") }
     it { should have_field("schools")           .of_type("String!") }
     it { should have_field("tinder-id")         .of_type("String!") }
-
-    it { should accept_argument("id").of_type("ID!") }
-    it { should accept_argument("bio").of_type("String!") }
-    it { should accept_argument("birthdate").of_type("ISO8601DateTime!") }
-    it { should accept_argument("city").of_type("String!") }
-    it { should accept_argument("gender").of_type("String!") }
-    it { should accept_argument("hide-age").of_type("Boolean!") }
-    it { should accept_argument("hide-distance").of_type("Boolean!") }
-    it { should accept_argument("instagram-id").of_type("String!") }
-    it { should accept_argument("instagram-username").of_type("String!") }
-    it { should accept_argument("is-traveling").of_type("Boolean!") }
-    it { should accept_argument("name").of_type("String!") }
-    it { should accept_argument("photos").of_type("String!") }
-    it { should accept_argument("schools").of_type("String!") }
-    it { should accept_argument("tinder-id").of_type("String!") }
 
     # Timestamps
     it { should have_field("active-at")         .of_type("ISO8601DateTime!") }
@@ -97,6 +82,32 @@ end
     it { should have_field("deleted-at")          .of_type("ISO8601DateTime!") }
     it { should have_field("sent-at")             .of_type("ISO8601DateTime!") }
 
+  end
+  ###############################################################################
+  describe QueryType do
+    subject { described_class.fields['people'] }
+
+    it { should accept_argument("id")       .of_type("ID") }
+    it { should accept_argument("birthdate").of_type("ISO8601Date") }
+    it { should accept_argument("name")     .of_type("String") }
+  end
+  ###############################################################################
+  describe QueryType do
+    subject { described_class.fields['messages'] }
+
+    it { should accept_argument("id").of_type("ID") }
+  end
+  ###############################################################################
+  describe QueryType do
+    subject { described_class.fields['data'] }
+
+    it { should accept_argument("id").of_type("ID") }
+  end
+  ###############################################################################
+  describe QueryType do
+    subject { described_class.fields['matches'] }
+
+    it { should accept_argument("id").of_type("ID") }
   end
 
 end

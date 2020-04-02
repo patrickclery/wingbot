@@ -4,13 +4,14 @@ class SaveUpdates
   def self.call(api_token:)
     client           = Tinder::Client.new
     client.api_token = api_token
-    profile          = client.profile
-    account          = Account.from_profile(profile)
+    account          = Account.from_profile(client.profile)
 
-    RawData.create account: Account.from_profile(profile),
-                   data:    client.updates,
+    # For now, always grab ALL updates (since 2015)
+    updates = client.updates(since: Time.new('2015'))
+
+    RawData.create account: account,
+                   data:    updates,
                    tag:     'updates'
-
     true
   end
 end

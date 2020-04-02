@@ -35,7 +35,6 @@ module RSpec
   describe ProcessUpdates do
     include_context 'raw data exists and is awaiting import'
 
-
     it { should be true }
     it { expect(described_class).to respond_to(:call) }
     # Updates only has one match / person in updates_with_one_match.json

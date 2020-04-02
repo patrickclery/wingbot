@@ -4,8 +4,16 @@
 # `phone_number` - the phone number to login with
 # `tinder_token_path` - where to store access_token.txt
 
+require 'bundler/setup'
+require 'rake'
+
 def api_token
   IO.read(token_path).chomp
+end
+
+def token_path
+  default_dir = File.join(Rails.root, '/tmp')
+  "#{ENV['tinder_token_path'] || default_dir}/tinder_access_token.txt"
 end
 
 namespace :tinder do

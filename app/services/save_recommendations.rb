@@ -7,9 +7,12 @@ class SaveRecommendations
     profile          = client.profile
     account          = Account.from_profile(profile)
 
-    RawData.create account: Account.from_profile(profile),
-                   data:    client.recommendations,
-                   tag:     'recommendations'
+    # Loop through until all recommendations are exhausted
+    while (data = client.recommendations) do
+      RawData.create account: Account.from_profile(profile),
+                     data:    data,
+                     tag:     'recommendations'
+    end
     true
   end
 end

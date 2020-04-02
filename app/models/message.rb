@@ -7,11 +7,14 @@ class Message < ApplicationRecord
   # @param Tinder::Message
   def self.from_message(message)
     match = Match.find_by(tinder_match_id: message.match_id)
-    new content:           message.message,
-        created_at:        message.created_date,
-        match:             match,
-        sent_at:           message.sent_date,
-        tinder_message_id: message._id
+
+    # Avoid re-creating messages
+    m = find_or_initialize_by(tinder_message_id: message._id)
+    m.assign_attributes content:           message.message,
+                        created_at:        message.created_date,
+                        match:             match,
+                        sent_at:           message.sent_date
+    m
   end
 
 end
