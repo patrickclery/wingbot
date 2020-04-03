@@ -16,8 +16,8 @@ gem "react-rails"
 gem "turbolinks"
 gem "webpacker", "~> 5.x"
 gem 'dry-initializer', git: 'https://github.com/dry-rb/dry-initializer.git'
-gem 'dry-struct', git: 'https://github.com/dry-rb/dry-struct.git'
-gem 'dry-types', git: 'https://github.com/dry-rb/dry-types.git'
+gem 'dry-struct', git: 'https://github.com/dry-rb/dry-struct.git', ref: 'fe507e6'
+gem 'dry-types', git: 'https://github.com/dry-rb/dry-types.git', ref: '3d54d08'
 gem 'graphiql-rails'
 gem 'graphql', git: 'https://github.com/rmosolgo/graphql-ruby'
 gem 'tinder_client', '~> 0.1.6', git: 'https://github.com/patrickclery/tinder_client.git'
