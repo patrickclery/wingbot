@@ -7,22 +7,20 @@ ruby "2.6.5"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap"
 gem "brakeman"
-gem "json", "~> 2.3.0"
 gem "fast_jsonapi"
+gem "json", "~> 2.3.0"
 gem "pg"
 gem "puma"
 gem "rails", "~> 6.0.2.2"
 gem "react-rails"
 gem "turbolinks"
 gem "webpacker", "~> 5.x"
-
 gem 'dry-initializer', git: 'https://github.com/dry-rb/dry-initializer.git'
 gem 'dry-struct', git: 'https://github.com/dry-rb/dry-struct.git'
 gem 'dry-types', git: 'https://github.com/dry-rb/dry-types.git'
-gem 'tinder_client', '~> 0.1.5', git: 'https://github.com/patrickclery/tinder_client.git'
-gem 'graphql', git: 'https://github.com/rmosolgo/graphql-ruby'
 gem 'graphiql-rails'
-
+gem 'graphql', git: 'https://github.com/rmosolgo/graphql-ruby'
+gem 'tinder_client', '~> 0.1.6', git: 'https://github.com/patrickclery/tinder_client.git'
 
 group :development do
   gem "better_errors"
