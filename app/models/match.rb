@@ -1,6 +1,8 @@
 class Match < ApplicationRecord
-  belongs_to :person, required: true, autosave: true
+  belongs_to :person, autosave: true
   has_one :account, through: :person
+
+  validates_presence_of :person
 
   # @return ApplicationRecord::Match
   # @param Tinder::Match

@@ -1,6 +1,10 @@
 class Profile < ApplicationRecord
   belongs_to :account, autosave: true
 
+  validates :account, presence: true
+  validates :name, presence: true
+  validates :tinder_id, presence: true
+
   # @return ApplicationRecord::ActiveProfile
   # @param Tinder::ActiveProfile pass a profile (ActiveProfile)
   def self.from_profile(profile)
@@ -11,7 +15,8 @@ class Profile < ApplicationRecord
         hide_age:      profile.plus_control.hide_age,
         hide_distance: profile.plus_control.hide_distance,
         is_traveling:  profile.travel.is_traveling,
-        photos:        profile.user.photos
+        photos:        profile.user.photos,
+        tinder_id:     profile.user._id
   end
 
 end

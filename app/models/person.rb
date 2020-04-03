@@ -1,6 +1,8 @@
 class Person < ApplicationRecord
   has_many :matches, autosave: true
-  belongs_to :account, required: true, autosave: true
+  belongs_to :account, autosave: true
+
+  validates :account, presence: true
 
   # @param Tinder::User
   def self.from_recommendation(recommendation)

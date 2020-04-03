@@ -1,27 +1,34 @@
 RSpec.describe Person, type: :model do
 
-  it { should belong_to(:account).autosave(true).required }
-  it { should have_many(:matches) }
+  describe "associations" do
+    it { should belong_to(:account).autosave(true) }
+    it { should have_many(:matches) }
+  end
 
-  it { should have_db_column(:bio).of_type(:text) }
-  it { should have_db_column(:birthdate).of_type(:date) }
-  it { should have_db_column(:city).of_type(:string) }
-  it { should have_db_column(:gender).of_type(:string) }
-  it { should have_db_column(:hide_age).of_type(:boolean) }
-  it { should have_db_column(:hide_distance).of_type(:boolean) }
-  it { should have_db_column(:instagram_id).of_type(:string) }
-  it { should have_db_column(:instagram_username).of_type(:string) }
-  it { should have_db_column(:is_traveling).of_type(:boolean) }
-  it { should have_db_column(:name).of_type(:string) }
-  it { should have_db_column(:photos).of_type(:text) }
-  it { should have_db_column(:schools).of_type(:text) }
-  it { should have_db_column(:tinder_id).of_type(:string) }
-  # Timestamps
-  it { should have_db_column(:active_at).of_type(:datetime) }
-  it { should have_db_column(:created_at).of_type(:datetime) }
-  it { should have_db_column(:updated_at).of_type(:datetime) }
-  it { should have_db_column(:deleted_at).of_type(:datetime) }
-  it { should have_db_column(:updated_at).of_type(:datetime) }
+  describe "schema" do
+    it { should have_db_column(:bio).of_type(:text) }
+    it { should have_db_column(:birthdate).of_type(:date) }
+    it { should have_db_column(:city).of_type(:json) }
+    it { should have_db_column(:gender).of_type(:string) }
+    it { should have_db_column(:hide_age).of_type(:boolean) }
+    it { should have_db_column(:hide_distance).of_type(:boolean) }
+    it { should have_db_column(:instagram_id).of_type(:string) }
+    it { should have_db_column(:instagram_username).of_type(:string) }
+    it { should have_db_column(:is_traveling).of_type(:boolean) }
+    it { should have_db_column(:name).of_type(:string) }
+    it { should have_db_column(:photos).of_type(:json) }
+    it { should have_db_column(:schools).of_type(:json) }
+    it { should have_db_column(:tinder_id).of_type(:string) }
+    # Timestamps
+    it { should have_db_column(:active_at).of_type(:datetime) }
+    it { should have_db_column(:created_at).of_type(:datetime) }
+    it { should have_db_column(:deleted_at).of_type(:datetime) }
+    it { should have_db_column(:updated_at).of_type(:datetime) }
+  end
+
+  describe "validations" do
+    it { should validate_presence_of(:account) }
+  end
 
   describe '#from_recommendation' do
     subject do
